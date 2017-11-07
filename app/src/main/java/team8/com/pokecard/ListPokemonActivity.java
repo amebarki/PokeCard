@@ -12,7 +12,6 @@ import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
 
-import adam.com.testwebservices.R;
 
 
 public class ListPokemonActivity extends AppCompatActivity {
@@ -22,7 +21,7 @@ public class ListPokemonActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_list_pokemon);
         final TextView test = (TextView) findViewById(R.id.tv);
 
         new Thread(new Runnable()
