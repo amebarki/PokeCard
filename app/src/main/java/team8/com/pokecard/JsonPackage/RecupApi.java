@@ -24,35 +24,34 @@ import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import team8.com.pokecard.Adapter.ListPokemonAdapter;
+
 /**
  * Created by iem on 07/11/2017.
  */
 
-public class RecupApi extends AsyncTask<Object, Void, Collection<Pokemon>> {
+public class RecupApi extends AsyncTask<Object, Void, String> {
     private String test;
     private URL url;
     private ArrayList<Pokemon> list_pokemon;
-
+    private ListPokemonAdapter adapter;
     @Override
-    protected Collection<Pokemon> doInBackground(Object... objects) {
+    protected String doInBackground(Object... objects) {
         try {
+            list_pokemon = (ArrayList<Pokemon>) objects[0];
+            adapter = (ListPokemonAdapter) objects[1];
             test = this.GET();
-            list_pokemon = new ArrayList<>();
             Boolean b =  list_pokemon.addAll(this.parseJSOn(test));
-            //list_pokemon = this.parseJSOn(test);
-            Log.d("ListActivity", b +"");
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return list_pokemon;
+        return test;
     }
 
     @Override
-    protected void onPostExecute(Collection<Pokemon> s) {
+    protected void onPostExecute(String s) {
         super.onPostExecute(s);
-
-        // tv.setText(test);
+        this.adapter.notifyDataSetChanged();
     }
 
     protected String GET() throws IOException {
@@ -82,11 +81,9 @@ public class RecupApi extends AsyncTask<Object, Void, Collection<Pokemon>> {
 
     public Collection<Pokemon> parseJSOn(String url) {
         Gson gson = new Gson();
-        // Pokemon[] poke =  gson.fromJson(url, Pokemon.class);
         Type collectionType = new TypeToken<Collection<Pokemon>>() {
         }.getType();
         Collection<Pokemon> poke = gson.fromJson(url, collectionType);
-        Log.d("GET", poke.toString());
         return poke;
     }
 
