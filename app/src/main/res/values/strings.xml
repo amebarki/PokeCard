@@ -1,4 +1,8 @@
 <resources>
+    //Facebook strings :
+    <string name="facebook_app_id">501866660170561</string>
+    <string name="fb_login_protocol_scheme">fb501866660170561</string>
+
     <string name="app_name">PokeCard</string>
     <string name="title_activity_menu">MenuActivity</string>
 
@@ -6,4 +10,6 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="bienvenue">Bienvenue sur PokeCard, veuillez vous connecter pour continuer.</string>
+    <string name="num_pokedex">N°Pokedex :</string>
 </resources>
