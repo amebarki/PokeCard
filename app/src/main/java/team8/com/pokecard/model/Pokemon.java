@@ -1,4 +1,4 @@
-package team8.com.pokecard.JsonPackage;
+package team8.com.pokecard.model;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -7,6 +7,9 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class Pokemon {
+
+
+
     @SerializedName("id")
     private int id;
     @SerializedName("name")

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="team8.com.pokecard.ListPokemonActivity">
+    tools:context="team8.com.pokecard.activity.PokedexActivity">
 
     <ListView
         android:id="@+id/list_pokemon_list_view"

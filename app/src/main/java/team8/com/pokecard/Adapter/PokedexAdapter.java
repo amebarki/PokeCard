@@ -13,18 +13,18 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import team8.com.pokecard.JsonPackage.Pokemon;
+import team8.com.pokecard.model.Pokemon;
 import team8.com.pokecard.R;
 
 /**
  * Created by Adam on 13/11/2017.
  */
 
-public class ListPokemonAdapter extends ArrayAdapter<Pokemon> {
+public class PokedexAdapter extends ArrayAdapter<Pokemon> {
     //tweets est la liste des models à afficher
     private Context context;
 
-    public ListPokemonAdapter(Context context, List<Pokemon> pokemons) {
+    public PokedexAdapter(Context context, List<Pokemon> pokemons) {
         super(context, 0, pokemons);
         this.context=context;
     }
