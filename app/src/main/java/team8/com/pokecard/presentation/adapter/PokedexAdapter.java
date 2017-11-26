@@ -1,4 +1,4 @@
-package team8.com.pokecard.Adapter;
+package team8.com.pokecard.presentation.adapter;
 
 import android.content.Context;
 import android.util.Log;
@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import team8.com.pokecard.model.Pokemon;
+import team8.com.pokecard.data.model.Pokemon;
 import team8.com.pokecard.R;
 
 /**

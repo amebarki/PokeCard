@@ -1,4 +1,4 @@
-package team8.com.pokecard.activity;
+package team8.com.pokecard.presentation.ui.activity;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

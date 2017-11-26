@@ -38,7 +38,7 @@ public class PokemonApplication extends Application {
                         )
                         .build();
 
-        PokemonService client =  retrofit.create(PokemonService.class);
+       pokemonService =  retrofit.create(PokemonService.class);
 
     }
 

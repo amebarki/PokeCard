@@ -21,8 +21,8 @@ import java.util.Collection;
 
 import javax.net.ssl.HttpsURLConnection;
 
-import team8.com.pokecard.Adapter.PokedexAdapter;
-import team8.com.pokecard.model.Pokemon;
+import team8.com.pokecard.presentation.adapter.PokedexAdapter;
+import team8.com.pokecard.data.model.Pokemon;
 
 /**
  * Created by iem on 07/11/2017.

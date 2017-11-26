@@ -1,4 +1,4 @@
-package team8.com.pokecard.activity;
+package team8.com.pokecard.presentation.ui.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
