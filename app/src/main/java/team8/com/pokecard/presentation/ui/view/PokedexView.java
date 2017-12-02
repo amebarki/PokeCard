@@ -14,4 +14,5 @@ public interface PokedexView {
 
     void DisplayGeneration(List<Pokemon> generation);
 
+    void DisplayAllPokemon(List<Pokemon> allPokemon);
 }

@@ -19,4 +19,7 @@ public interface PokemonService {
     @GET("pokemon/generation/get/{id}")
     Call<List<Pokemon>> getGeneration(@Path("id") int id);
 
+    @GET("pokemon/all")
+    Call<List<Pokemon>> getAllPokemon();
+
 }

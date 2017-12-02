@@ -73,6 +73,23 @@ public class PokemonManager {
         });
     }
 
+    public void getAllPokemon(final BasePresenter basePresenter)
+    {
+        Call<List<Pokemon>> call = PokemonApplication.getPokemonService().getAllPokemon();
+        call.enqueue(new Callback<List<Pokemon>>() {
+            @Override
+            public void onResponse(Call<List<Pokemon>> call, Response<List<Pokemon>> response) {
+                basePresenter.getAllPokemon(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<Pokemon>> call, Throwable t) {
+
+            }
+        });
+    }
+
+
     public Pokemon getPokemonSync(int id) {
 
 

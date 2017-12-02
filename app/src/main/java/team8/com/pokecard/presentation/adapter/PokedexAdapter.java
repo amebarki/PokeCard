@@ -52,8 +52,8 @@ public class PokedexAdapter extends ArrayAdapter<Pokemon> {
         Log.d("Adapter", poke.toString());
         viewHolder.id.setText(poke.getId()+"");
         viewHolder.name.setText(poke.getName());
-        String url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+poke.getId()+".png";
-        Picasso.with(context).load(url).into(viewHolder.image);
+        //String url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+poke.getId()+".png";
+        Picasso.with(context).load(poke.getSprite()).into(viewHolder.image);
 
 
         return convertView;

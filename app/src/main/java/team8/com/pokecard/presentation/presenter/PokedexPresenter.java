@@ -52,6 +52,10 @@ public class PokedexPresenter implements BasePresenter {
         PokemonManager.getInstance().getGeneration(1,this);
     }
 
+    public void requestAllPokemon(){
+        PokemonManager.getInstance().getAllPokemon(this);
+    }
+
     @Override
     public void getPokemon(Pokemon p) {
         this.poke = p;
@@ -73,6 +77,16 @@ public class PokedexPresenter implements BasePresenter {
         }else
         {
             // display Error
+        }
+    }
+
+    @Override
+    public void getAllPokemon(List<Pokemon> allPokemon) {
+        if(allPokemon !=null)
+        {
+            pokedexView.DisplayAllPokemon(allPokemon);
+        }else{
+
         }
     }
 }

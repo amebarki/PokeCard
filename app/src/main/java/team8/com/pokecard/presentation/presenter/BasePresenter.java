@@ -14,4 +14,5 @@ public interface BasePresenter {
 
     void getGeneration(List<Pokemon> generation);
 
+    void getAllPokemon(List<Pokemon> allPokemon);
 }

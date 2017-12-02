@@ -14,10 +14,14 @@ public class Pokemon {
     private int id;
     @SerializedName("name")
     private String name;
+    @SerializedName("sprite")
+    private String sprite;
 
-    public Pokemon(int id, String name){
+
+    public Pokemon(int id, String name,String sprite){
         this.id = id;
         this.name = name;
+        this.sprite = sprite;
     }
 
     public int getId() {
@@ -36,13 +40,21 @@ public class Pokemon {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "Pokemon [ " +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' + "]";
 
+    public String getSprite() {
+        return sprite;
     }
 
+    public void setSprite(String sprite) {
+        this.sprite = sprite;
+    }
 
+    @Override
+    public String toString() {
+        return "Pokemon{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", sprite='" + sprite + '\'' +
+                '}';
+    }
 }
