@@ -2,7 +2,6 @@ package team8.com.pokecard.JsonPackage;
 
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -19,12 +18,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
 
-import team8.com.pokecard.Adapter.ListPokemonAdapter;
+import team8.com.pokecard.presentation.adapter.PokedexAdapter;
+import team8.com.pokecard.data.model.Pokemon;
 
 /**
  * Created by iem on 07/11/2017.
@@ -34,12 +32,12 @@ public class RecupApi extends AsyncTask<Object, Void, String> {
     private String test;
     private URL url;
     private ArrayList<Pokemon> list_pokemon;
-    private ListPokemonAdapter adapter;
+    private PokedexAdapter adapter;
     @Override
     protected String doInBackground(Object... objects) {
         try {
             list_pokemon = (ArrayList<Pokemon>) objects[0];
-            adapter = (ListPokemonAdapter) objects[1];
+            adapter = (PokedexAdapter) objects[1];
             test = this.GET();
             Boolean b =  list_pokemon.addAll(this.parseJSOn(test));
         } catch (IOException e) {
