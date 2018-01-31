@@ -3,22 +3,23 @@ package team8.com.pokecard;
 import android.app.Application;
 
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import team8.com.pokecard.Service.PokemonService;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
+import team8.com.pokecard.Service.PokemonApiService;
 
 /**
  * Created by iem on 15/11/2017.
  */
 
+@SuppressWarnings("AssignmentToStaticFieldFromInstanceMethod")
 public class PokemonApplication extends Application {
 
-    private static PokemonService pokemonService;
-
+    private static PokemonApiService pokemonApiService;
 
     @Override
-    public void onCreate()
-    {
+    public void onCreate() {
         super.onCreate();
         String API_BASE_URL = "http://pokecard.local/index.php/";
 
@@ -28,9 +29,14 @@ public class PokemonApplication extends Application {
                 new Retrofit.Builder()
                         .baseUrl(API_BASE_URL)
                         .addConverterFactory(
+                                ScalarsConverterFactory.create())
+                        .addConverterFactory(
                                 GsonConverterFactory.create()
                         );
-
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        // set your desired log level
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+        httpClient.addInterceptor(logging);
         Retrofit retrofit =
                 builder
                         .client(
@@ -38,11 +44,13 @@ public class PokemonApplication extends Application {
                         )
                         .build();
 
-       pokemonService =  retrofit.create(PokemonService.class);
-
+        pokemonApiService = retrofit.create(PokemonApiService.class);
     }
 
-    public static PokemonService getPokemonService() {
-        return pokemonService;
+    public static PokemonApiService getPokemonApiService() {
+        return pokemonApiService;
     }
+
+
+
 }

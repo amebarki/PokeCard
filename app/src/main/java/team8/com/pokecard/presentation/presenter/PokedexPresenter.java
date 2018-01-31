@@ -1,9 +1,11 @@
 package team8.com.pokecard.presentation.presenter;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.List;
 
+import team8.com.pokecard.data.manager.PokemonDatabaseManager;
 import team8.com.pokecard.data.manager.PokemonManager;
 import team8.com.pokecard.data.model.Pokemon;
 import team8.com.pokecard.presentation.ui.view.PokedexView;
@@ -17,6 +19,7 @@ public class PokedexPresenter implements BasePresenter {
     Pokemon pok;
     PokedexView pokedexView;
     PokemonManager pokemonManager;
+    PokemonDatabaseManager pokemonDatabaseManager;
     Context context;
     Pokemon poke;
     public PokedexPresenter(Context context, PokedexView pokedexView)
@@ -40,11 +43,8 @@ public class PokedexPresenter implements BasePresenter {
 
 
     public void requestPokemon() {
-            boolean success=true;
             // call manager
             PokemonManager.getInstance().getPokemon(1,this);
-
-
     }
 
     public void requestGeneration()
@@ -71,8 +71,11 @@ public class PokedexPresenter implements BasePresenter {
 
     @Override
     public void getGeneration(List<Pokemon> generation) {
+        Log.d("POKEMON" ,"getGeneration");
+
         if(generation != null)
         {
+            Log.d("POKEMON" ,"not null");
             pokedexView.DisplayGeneration(generation);
         }else
         {
@@ -88,5 +91,22 @@ public class PokedexPresenter implements BasePresenter {
         }else{
 
         }
+    }
+
+    @Override
+    public void getIdByFacebook(int id){
+
+    }
+
+
+    @Override
+    public void getIdByGoogle(int id) {
+
+    }
+
+
+    public void sendPokemon()
+    {
+        PokemonDatabaseManager.getInstance().sendPokemon();
     }
 }

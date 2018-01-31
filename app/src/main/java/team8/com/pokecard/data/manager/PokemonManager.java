@@ -19,17 +19,12 @@ import team8.com.pokecard.presentation.presenter.BasePresenter;
 public class PokemonManager {
 
     private static PokemonManager ourInstance;
-
-
-
     public static PokemonManager getInstance() {
         if(ourInstance == null) {
             ourInstance = new PokemonManager();
         }
         return ourInstance;
     }
-
-
 
     private PokemonManager() {
 
@@ -39,7 +34,7 @@ public class PokemonManager {
 
         Log.d("POKEMON","" + id);
 
-        Call<Pokemon> call = PokemonApplication.getPokemonService().getPokemon(id);
+        Call<Pokemon> call = PokemonApplication.getPokemonApiService().getPokemon(id);
 
         call.enqueue(new Callback<Pokemon>() {
             @Override
@@ -59,11 +54,12 @@ public class PokemonManager {
 
     public void getGeneration(int id, final BasePresenter basePresenter)
     {
-        Call<List<Pokemon>> call = PokemonApplication.getPokemonService().getGeneration(id);
+
+        Call<List<Pokemon>> call = PokemonApplication.getPokemonApiService().getGeneration(id);
         call.enqueue(new Callback<List<Pokemon>>() {
             @Override
             public void onResponse(Call<List<Pokemon>> call, Response<List<Pokemon>> response) {
-                    basePresenter.getGeneration(response.body());
+                basePresenter.getGeneration(response.body());
             }
 
             @Override
@@ -75,7 +71,7 @@ public class PokemonManager {
 
     public void getAllPokemon(final BasePresenter basePresenter)
     {
-        Call<List<Pokemon>> call = PokemonApplication.getPokemonService().getAllPokemon();
+        Call<List<Pokemon>> call = PokemonApplication.getPokemonApiService().getAllPokemon();
         call.enqueue(new Callback<List<Pokemon>>() {
             @Override
             public void onResponse(Call<List<Pokemon>> call, Response<List<Pokemon>> response) {
@@ -89,12 +85,11 @@ public class PokemonManager {
         });
     }
 
-
     public Pokemon getPokemonSync(int id) {
 
 
         try {
-            Call<Pokemon> call = PokemonApplication.getPokemonService().getPokemon(id);
+            Call<Pokemon> call = PokemonApplication.getPokemonApiService().getPokemon(id);
             Response<Pokemon> response = call.execute();
             if(response.isSuccessful()) {
                 Pokemon p = response.body();
@@ -110,7 +105,5 @@ public class PokemonManager {
     public interface IPokemon {
         void onSuccess(Pokemon p);
     }
-
-
 
 }

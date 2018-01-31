@@ -16,13 +16,13 @@ import team8.com.pokecard.presentation.presenter.PokedexPresenter;
 import team8.com.pokecard.presentation.ui.view.PokedexView;
 
 
+@SuppressWarnings("AssignmentToStaticFieldFromInstanceMethod")
 public class PokedexActivity extends AppCompatActivity implements PokedexView {
 
     private static final String TAG = "MainActivity";
     private static ListView list_pokemon_listview;
     private static ArrayList<Pokemon> array;
     private static PokedexAdapter adapter;
-    private static TextView textView_pokemon;
 
     private PokedexPresenter pokedexPresenter;
     @Override
@@ -33,33 +33,26 @@ public class PokedexActivity extends AppCompatActivity implements PokedexView {
         list_pokemon_listview = (ListView) findViewById(R.id.list_pokemon_list_view);
         adapter = new PokedexAdapter(this,array);
         list_pokemon_listview.setAdapter(adapter);
-      //  RecupApi recup = new RecupApi();
-     //   recup.execute(array,adapter);
-        // envoyer instance d'une liste et la mettre a jour dans l'async task
         pokedexPresenter = new PokedexPresenter(this,this);
-
-       // pokedexPresenter.requestGeneration();
-       // pokedexPresenter.requestPokemon();
-        pokedexPresenter.requestAllPokemon();
+        //pokedexPresenter.requestGeneration();
+        pokedexPresenter.sendPokemon();
     }
 
     @Override
     public void DisplayPokemon(Pokemon pokemon) {
-        Log.d("pokemon",pokemon.getName());
-        textView_pokemon.setText(pokemon.toString());
+
     }
 
     @Override
     public void DisplayGeneration(List<Pokemon> generation) {
-            Log.d("POKEMON", generation.toString());
+        array.addAll(generation);
+        adapter.notifyDataSetChanged();
     }
 
     @Override
     public void DisplayAllPokemon(List<Pokemon> allPokemon) {
-        Log.d("POKEMON",allPokemon.toString());
         array.addAll(allPokemon);
         adapter.notifyDataSetChanged();
     }
-
 
 }
