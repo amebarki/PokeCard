@@ -17,19 +17,20 @@ import team8.com.pokecard.presentation.ui.view.PokedexView;
 public class PokedexPresenter implements BasePresenter {
 
     Pokemon pok;
-    PokedexView pokedexView;
     PokemonManager pokemonManager;
     PokemonDatabaseManager pokemonDatabaseManager;
-    Context context;
     Pokemon poke;
+
+    private PokedexView pokedexView;
+    private Context context;
+    private Pokemon pokemon;
     public PokedexPresenter(Context context, PokedexView pokedexView)
     {
         this.context = context;
         this.pokedexView = pokedexView;
     }
 
-
-  /*  public void test() {
+    /*  public void test() {
 
         PokemonManager.getInstance().getPokemon(1, new PokemonManager.IPokemon() {
             @Override
@@ -40,16 +41,12 @@ public class PokedexPresenter implements BasePresenter {
 
     }*/
 
-
-
-    public void requestPokemon() {
-            // call manager
-            PokemonManager.getInstance().getPokemon(1,this);
+    public void requestPokemon(int id) {
+        PokemonManager.getInstance().getPokemon(id,this);
     }
 
-    public void requestGeneration()
-    {
-        PokemonManager.getInstance().getGeneration(1,this);
+    public void requestGeneration(int generation) {
+        PokemonManager.getInstance().getGeneration(generation,this);
     }
 
     public void requestAllPokemon(){
@@ -58,37 +55,33 @@ public class PokedexPresenter implements BasePresenter {
 
     @Override
     public void getPokemon(Pokemon p) {
-        this.poke = p;
-        if(poke !=null)
-        {
-            pokedexView.DisplayPokemon(poke);
-        }
-        else
-        {
+        this.pokemon = p;
+        if(pokemon !=null) {
+            pokedexView.DisplayPokemon(pokemon);
+        } else {
             // displayError
         }
     }
 
     @Override
     public void getGeneration(List<Pokemon> generation) {
-        Log.d("POKEMON" ,"getGeneration");
+        Log.d("POKEMON", "getGeneration");
 
-        if(generation != null)
-        {
-            Log.d("POKEMON" ,"not null");
-            pokedexView.DisplayGeneration(generation);
-        }else
-        {
-            // display Error
+        if (generation != null) {
+            Log.d("POKEMON", "not null");
+            if (generation != null) {
+                pokedexView.DisplayGeneration(generation);
+            } else {
+                // display Error
+            }
         }
     }
 
     @Override
     public void getAllPokemon(List<Pokemon> allPokemon) {
-        if(allPokemon !=null)
-        {
+        if(allPokemon !=null) {
             pokedexView.DisplayAllPokemon(allPokemon);
-        }else{
+        } else {
 
         }
     }

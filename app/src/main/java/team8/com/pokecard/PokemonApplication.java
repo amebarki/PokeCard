@@ -17,6 +17,10 @@ import team8.com.pokecard.Service.PokemonApiService;
 public class PokemonApplication extends Application {
 
     private static PokemonApiService pokemonApiService;
+    final public static int PRINT_LIST_ALL = 1;
+    final public static int PRINT_LIST_GENERATION = 2;
+    final public static int PRINT_LIST_ONE = 3;
+
 
     @Override
     public void onCreate() {

@@ -3,19 +3,49 @@ package team8.com.pokecard.presentation.ui.activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import team8.com.pokecard.R;
+import team8.com.pokecard.data.model.Pokemon;
+import team8.com.pokecard.presentation.presenter.CollectionPresenter;
 
 public class DetailPokemonActivity extends AppCompatActivity {
+    Pokemon pokemon;
+    CollectionPresenter presenter;
+    ImageView imageView;
+    TextView nameTextView;
+    TextView idTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_pokemon);
 
-        ImageView imageView = (ImageView) findViewById(R.id.detail_picture_pokemon);
-        Picasso.with(getBaseContext()).load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png").into(imageView);
+        presenter = CollectionPresenter.getInstance();
+        pokemon = presenter.getCurrentPokemon();
+
+        setIdView();
+        setNameView();
+        setImageView();
+    }
+
+    private void setImageView() {
+        imageView = findViewById(R.id.detail_image);
+        Picasso.with(this).load(pokemon.getSprite()).into(imageView);
+    }
+
+    public void setIdView() {
+        idTextView = findViewById(R.id.detail_text_id);
+        idTextView.setText(String.valueOf(pokemon.getId()));
+    }
+
+    private void setNameView() {
+        nameTextView = findViewById(R.id.detail_text_name);
+        nameTextView.setText(pokemon.getName());
     }
 }

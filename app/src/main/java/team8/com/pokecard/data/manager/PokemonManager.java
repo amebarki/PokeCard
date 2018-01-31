@@ -19,11 +19,13 @@ import team8.com.pokecard.presentation.presenter.BasePresenter;
 public class PokemonManager {
 
     private static PokemonManager ourInstance;
+    private static PokemonManager instance;
+
     public static PokemonManager getInstance() {
-        if(ourInstance == null) {
-            ourInstance = new PokemonManager();
+        if(instance == null) {
+            instance = new PokemonManager();
         }
-        return ourInstance;
+        return instance;
     }
 
     private PokemonManager() {
@@ -31,11 +33,9 @@ public class PokemonManager {
     }
 
     public void getPokemon(int id, final BasePresenter basePresenter) {
-
         Log.d("POKEMON","" + id);
 
         Call<Pokemon> call = PokemonApplication.getPokemonApiService().getPokemon(id);
-
         call.enqueue(new Callback<Pokemon>() {
             @Override
             public void onResponse(Call<Pokemon> call, Response<Pokemon> response) {
@@ -45,16 +45,13 @@ public class PokemonManager {
 
             @Override
             public void onFailure(Call<Pokemon> call, Throwable t) {
-                    Log.d("POKEMON",t.getMessage());
+
             }
         });
-
-
     }
 
     public void getGeneration(int id, final BasePresenter basePresenter)
     {
-
         Call<List<Pokemon>> call = PokemonApplication.getPokemonApiService().getGeneration(id);
         call.enqueue(new Callback<List<Pokemon>>() {
             @Override
