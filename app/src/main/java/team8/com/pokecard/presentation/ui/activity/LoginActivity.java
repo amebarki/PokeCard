@@ -1,6 +1,5 @@
 package team8.com.pokecard.presentation.ui.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -18,8 +17,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.SignInButton;
 
 import team8.com.pokecard.R;
+import team8.com.pokecard.Service.GoogleSignIn;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
     private static final int RC_SIGN_IN = 100;
     GoogleSignIn googleSignIn;
     public CallbackManager callbackManager;
@@ -34,54 +34,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         addSignInGoogleButtonListener();
 
         callbackManager = CallbackManager.Factory.create();
-        LoginButton loginButton = (LoginButton) findViewById(R.id.sign_in_facebook_button);
+        LoginButton loginButton = findViewById(R.id.sign_in_facebook_button);
         loginButton.setReadPermissions("email");
-        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                goToMenu();
-            }
+        loginButton.registerCallback(callbackManager, new MyFacebookCallback());
 
-            @Override
-            public void onCancel() {
-
-            }
-
-            @Override
-            public void onError(FacebookException error) {
-
-            }
-        });
-
-    }
-
-    @Override
-    public void onClick(View view) {
-        if(view.getId() == googleButton.getId()){
-            Context context = getApplicationContext();
-            CharSequence text = "Hello toast!";
-            int duration = Toast.LENGTH_SHORT;
-
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-
-
-        }
-    }
-
-    private void addSignInGoogleButtonListener() {
-        SignInButton signInGoogle = findViewById(R.id.sign_in_google_button);
-        signInGoogle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                googleClick(view);
-            }
-        });
-    }
-
-    public void googleClick(View view) {
-        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(googleSignIn.mGoogleApiClient);
-        startActivityForResult(signInIntent,RC_SIGN_IN);
     }
 
     @Override
@@ -96,12 +52,44 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    private void addSignInGoogleButtonListener() {
+        SignInButton signInGoogle = findViewById(R.id.sign_in_google_button);
+        signInGoogle.setOnClickListener(this);
+    }
+
+    public void googleClick(View view) {
+        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(googleSignIn.mGoogleApiClient);
+        startActivityForResult(signInIntent,RC_SIGN_IN);
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(view.getId() == googleButton.getId()){
+            googleClick(view);
+        }
+    }
+
     private void goToMenu() {
-//        Intent menuIntent = new Intent(this, MenuActivity.class);
-//        startActivity(menuIntent);
+         Intent menuIntent = new Intent(this, HomeActivity.class);
+         startActivity(menuIntent);
 
-        Intent detailIntent = new Intent(this, DetailPokemonActivity.class);
-        startActivity(detailIntent);
+    }
 
+    private class MyFacebookCallback implements FacebookCallback<LoginResult> {
+        @Override
+        public void onSuccess(LoginResult loginResult) {
+            goToMenu();
+        }
+
+        @Override
+        public void onCancel() {
+            Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.connection_error), Toast.LENGTH_SHORT);
+            toast.show();
+        }
+
+        @Override
+        public void onError(FacebookException error) {
+
+        }
     }
 }

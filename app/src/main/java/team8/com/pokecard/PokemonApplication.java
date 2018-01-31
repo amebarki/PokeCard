@@ -7,18 +7,16 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import team8.com.pokecard.Service.PokemonService;
 
-/**
- * Created by iem on 15/11/2017.
- */
-
 public class PokemonApplication extends Application {
 
     private static PokemonService pokemonService;
+    final public static int PRINT_LIST_ALL = 1;
+    final public static int PRINT_LIST_GENERATION = 2;
+    final public static int PRINT_LIST_ONE = 3;
 
 
     @Override
-    public void onCreate()
-    {
+    public void onCreate() {
         super.onCreate();
         String API_BASE_URL = "http://pokecard.local/index.php/";
 

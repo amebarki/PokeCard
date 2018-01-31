@@ -1,4 +1,5 @@
-package team8.com.pokecard.presentation.ui.activity;
+
+package team8.com.pokecard.Service;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -14,8 +15,9 @@ import com.google.android.gms.common.api.GoogleApiClient;
  * Created by iem on 10/11/2017.
  */
 
+
 public class GoogleSignIn implements GoogleApiClient.OnConnectionFailedListener {
-    GoogleApiClient mGoogleApiClient;
+    public GoogleApiClient mGoogleApiClient;
     Context context;
 
     public GoogleSignIn(FragmentActivity fragmentActivity) {

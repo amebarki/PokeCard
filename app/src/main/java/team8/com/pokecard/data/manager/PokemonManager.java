@@ -18,29 +18,21 @@ import team8.com.pokecard.presentation.presenter.BasePresenter;
 
 public class PokemonManager {
 
-    private static PokemonManager ourInstance;
-
-
+    private static PokemonManager instance;
 
     public static PokemonManager getInstance() {
-        if(ourInstance == null) {
-            ourInstance = new PokemonManager();
+        if(instance == null) {
+            instance = new PokemonManager();
         }
-        return ourInstance;
+        return instance;
     }
-
-
 
     private PokemonManager() {
 
     }
 
     public void getPokemon(int id, final BasePresenter basePresenter) {
-
-        Log.d("POKEMON","" + id);
-
         Call<Pokemon> call = PokemonApplication.getPokemonService().getPokemon(id);
-
         call.enqueue(new Callback<Pokemon>() {
             @Override
             public void onResponse(Call<Pokemon> call, Response<Pokemon> response) {
@@ -50,20 +42,17 @@ public class PokemonManager {
 
             @Override
             public void onFailure(Call<Pokemon> call, Throwable t) {
-                    Log.d("POKEMON",t.getMessage());
+
             }
         });
-
-
     }
 
-    public void getGeneration(int id, final BasePresenter basePresenter)
-    {
+    public void getGeneration(int id, final BasePresenter basePresenter) {
         Call<List<Pokemon>> call = PokemonApplication.getPokemonService().getGeneration(id);
         call.enqueue(new Callback<List<Pokemon>>() {
             @Override
             public void onResponse(Call<List<Pokemon>> call, Response<List<Pokemon>> response) {
-                    basePresenter.getGeneration(response.body());
+                basePresenter.getGeneration(response.body());
             }
 
             @Override
@@ -73,8 +62,7 @@ public class PokemonManager {
         });
     }
 
-    public void getAllPokemon(final BasePresenter basePresenter)
-    {
+    public void getAllPokemon(final BasePresenter basePresenter) {
         Call<List<Pokemon>> call = PokemonApplication.getPokemonService().getAllPokemon();
         call.enqueue(new Callback<List<Pokemon>>() {
             @Override

@@ -1,31 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="10dp">
 
+    <ImageView
+        android:id="@+id/list_pokemon_image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:contentDescription="@string/pokemon_image"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="20dp"/>
 
     <TextView
         android:id="@+id/list_pokemon_row_id_pokemon"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:text="TextView"
-        android:layout_weight="1"/>
-
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/id"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/list_pokemon_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"/>
 
     <TextView
         android:id="@+id/list_pokemon_row_name"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="TextView" />
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:text="@string/name"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/list_pokemon_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/list_pokemon_row_id_pokemon"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"/>
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>
