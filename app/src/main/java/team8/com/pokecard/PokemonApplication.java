@@ -25,8 +25,8 @@ public class PokemonApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        String API_BASE_URL = "http://pokecard.local/index.php/";
-
+        String API_BASE_URL = "http://172.31.246.100/pokecard/index.php/";
+//172.31.246.100
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
         Retrofit.Builder builder =

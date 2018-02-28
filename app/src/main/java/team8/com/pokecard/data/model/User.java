@@ -1,5 +1,10 @@
 package team8.com.pokecard.data.model;
 
+import android.util.Log;
+
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+
 import org.json.JSONObject;
 
 /**
@@ -13,10 +18,19 @@ public class User {
     private String emailGoogle;
     private int idFacebook;
     private int idGoogle;
+    private static String TAG="GOOOGLE";
     public User(){
 
     }
 
+    public User(GoogleSignInAccount result)
+    {
+        Log.d(TAG,""+ result.getEmail());
+        Log.d(TAG,""+ result.getId());
+        Log.d(TAG,""+ result.getDisplayName());
+        Log.d(TAG,""+ result.getFamilyName());
+        Log.d(TAG,""+ result.getGivenName());
+    }
     public User(String emailFacebook,String emailGoogle) {
         this.emailFacebook = emailFacebook;
         this.emailGoogle = emailGoogle;

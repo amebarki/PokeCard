@@ -36,19 +36,30 @@ public interface PokemonApiService {
     Call<List<Pokemon>> getAllPokemon();
 
 
-
     @GET("local/users/get/{id]}/pokemon/list")
     Call<List<Pokemon>> getUserListPokemon(@Path("id") int id);
 
     @GET("/local/users/facebook/get/{id}")
-    Call<Integer> getUserIdByFacebook(@Path("id")int id);
+    Call<Integer> getUserIdByFacebook(@Path("id") int id);
 
     @GET("/local/users/google/get/{id}")
-    Call<Integer> getUserIdByGoogle(@Path("id")int id);
+    Call<Integer> getUserIdByGoogle(@Path("id") int id);
 
     //Post Database
 
     // Post for exchange pokemon
+
+    @FormUrlEncoded
+    @POST
+    Call createGoogleUser(@Field("user_name") String user_name,
+                    @Field("google_id") int google_id);
+
+    @FormUrlEncoded
+    @POST
+    Call createFacebookUser(@Field("user_name") String user_name,
+                          @Field("facebook_id") int facebook_id);
+
+
 
     @FormUrlEncoded
     @POST("local/users/offer")
@@ -59,7 +70,7 @@ public interface PokemonApiService {
 
     @FormUrlEncoded
     @POST("local/users/accept")
-    Call acceptExchange(@Field("user2_id")int user2_id,
+    Call acceptExchange(@Field("user2_id") int user2_id,
                         @Field("exchange_id") int exchange_id,
                         @Field("offer_accepted") int offer_accepted);
 
