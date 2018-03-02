@@ -7,7 +7,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
-import team8.com.pokecard.Service.PokemonApiService;
+import team8.com.pokecard.service.PokemonApiService;
 
 /**
  * Created by iem on 15/11/2017.
@@ -20,12 +20,12 @@ public class PokemonApplication extends Application {
     final public static int PRINT_LIST_ALL = 1;
     final public static int PRINT_LIST_GENERATION = 2;
     final public static int PRINT_LIST_ONE = 3;
+    final public static String API_BASE_URL = "http://192.168.43.19/pokecard/index.php/";
 
 
     @Override
     public void onCreate() {
         super.onCreate();
-        String API_BASE_URL = "http://pokecard.local/index.php/";
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
@@ -54,7 +54,4 @@ public class PokemonApplication extends Application {
     public static PokemonApiService getPokemonApiService() {
         return pokemonApiService;
     }
-
-
-
 }

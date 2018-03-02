@@ -51,7 +51,7 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.ui.activity.DetailPokemonActivity"></activity>
+        <activity android:name=".presentation.ui.activity.DetailPokemonActivity" />
     </application>
 
 </manifest>

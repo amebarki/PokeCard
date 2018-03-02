@@ -22,4 +22,7 @@
     <string name="pokedex">Pokedex</string>
     <string name="my_pokemon">Mes Pokemon</string>
     <string name="deconnection">Deconnexion</string>
+    <string name="card_pokemon_name">Nom du Pokemon</string>
+    <string name="card_pokemon_id">Id</string>
+    <string name="card_pokemon_image_description">Image du pokemon</string>
 </resources>

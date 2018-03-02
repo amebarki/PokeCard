@@ -2,6 +2,7 @@ package team8.com.pokecard.presentation.ui.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,16 +24,8 @@ public class PokedexFragment extends Fragment implements PokedexView {
     private PokedexAdapter pokedexAdapter;
     private PokedexPresenter pokedexPresenter;
 
-    public static PokedexFragment newInstanceGeneration(int generation) {
-        return newInstance(PokemonApplication.PRINT_LIST_GENERATION, generation, 0);
-    }
-
-    public static PokedexFragment newInstancePokemon(int id) {
-        return newInstance(PokemonApplication.PRINT_LIST_GENERATION, 0, id);
-    }
-
     public static PokedexFragment newInstanceAll() {
-        return newInstance(PokemonApplication.PRINT_LIST_ALL,0, 0);
+        return newInstance(PokemonApplication.PRINT_LIST_GENERATION,1, 0);
     }
 
     private static PokedexFragment newInstance(int printType, int generation, int id) {
@@ -107,6 +100,7 @@ public class PokedexFragment extends Fragment implements PokedexView {
     @Override
     public void DisplayAllPokemon(List<Pokemon> allPokemon) {
         //Affiche tous les Pokemon
+        Log.d("Display",allPokemon.toString());
         pokemonArrayList.addAll(allPokemon);
         pokedexAdapter.notifyDataSetChanged();
     }

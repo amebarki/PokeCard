@@ -1,5 +1,5 @@
 
-package team8.com.pokecard.Service;
+package team8.com.pokecard.service;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

@@ -1,20 +1,14 @@
-package team8.com.pokecard.Service;
+package team8.com.pokecard.service;
 
 import java.util.List;
 
-import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
 import team8.com.pokecard.data.manager.PokemonDatabaseManager;
-import team8.com.pokecard.data.manager.PokemonManager;
 import team8.com.pokecard.data.model.Pokemon;
 
 /**
@@ -46,7 +40,7 @@ public interface PokemonApiService {
     @GET("/local/users/google/get/{id}")
     Call<Integer> getUserIdByGoogle(@Path("id")int id);
 
-    //Post Database
+    // Post Database
 
     // Post for exchange pokemon
 

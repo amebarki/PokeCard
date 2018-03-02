@@ -1,4 +1,4 @@
-package team8.com.pokecard.JsonPackage;
+package team8.com.pokecard.json;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -21,6 +21,7 @@ import java.util.Collection;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import team8.com.pokecard.PokemonApplication;
 import team8.com.pokecard.presentation.ui.adapter.PokedexAdapter;
 import team8.com.pokecard.data.model.Pokemon;
 
@@ -55,7 +56,7 @@ public class RecupApi extends AsyncTask<Object, Void, String> {
     protected String GET() throws IOException {
 
         String str = "";
-        String urlLink = "http://pokecard.local/index.php/pokemon/generation/get/1";
+        String urlLink = PokemonApplication.API_BASE_URL + "pokemon/generation/get/1";
         try {
             url = new URL(urlLink);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();

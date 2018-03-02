@@ -4,31 +4,26 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.GraphRequest;
-import com.facebook.GraphResponse;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.SignInButton;
 
-import org.json.JSONObject;
-
 import team8.com.pokecard.R;
 import team8.com.pokecard.data.model.User;
-import team8.com.pokecard.Service.GoogleSignIn;
+import team8.com.pokecard.service.GoogleSignIn;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private static final int RC_SIGN_IN = 100;
     GoogleSignIn googleSignIn;
     public CallbackManager callbackManager;
-    public Button googleButton;
+    private SignInButton googleButton;
     private User user;
 
     @Override
@@ -36,6 +31,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        googleButton = findViewById(R.id.sign_in_google_button);
         googleSignIn = new GoogleSignIn(this);
         addSignInGoogleButtonListener();
 

@@ -1,27 +1,25 @@
-package team8.com.pokecard.JsonPackage;
+package team8.com.pokecard.json;
 
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Iterator;
 
 import javax.net.ssl.HttpsURLConnection;
+
+import team8.com.pokecard.PokemonApplication;
 
 /**
  * Created by Adam on 08/11/2017.
@@ -38,7 +36,7 @@ public class PostApi extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... string) {
         try {
 
-            URL url = new URL("http://pokecard.local/index.php/gamers/receive"); // here is your URL path
+            URL url = new URL(PokemonApplication.API_BASE_URL + "gamers/receive"); // here is your URL path
 
             JSONObject postDataParams = new JSONObject();
             postDataParams.put("name", "abc");
