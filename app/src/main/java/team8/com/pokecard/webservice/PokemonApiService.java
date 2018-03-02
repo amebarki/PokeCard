@@ -1,4 +1,4 @@
-package team8.com.pokecard.Service;
+package team8.com.pokecard.webservice;
 
 import java.util.List;
 
@@ -39,7 +39,7 @@ public interface PokemonApiService {
     @GET("/local/users/google/get/{id}")
     Call<Integer> getUserIdByGoogle(@Path("id") int id);
 
-    //Post Database
+    // Post Database
 
     // Post for exchange pokemon
 

@@ -23,8 +23,11 @@ public class PokedexPresenter implements BasePresenter {
     private PokedexView pokedexView;
     private Context context;
     private Pokemon pokemon;
+
+
     public PokedexPresenter(Context context, PokemonManager manager,PokedexView pokedexView)
     {
+
         this.context = context;
         this.pokedexView = pokedexView;
         this.pokemonManager = manager;
@@ -51,6 +54,7 @@ public class PokedexPresenter implements BasePresenter {
 
     public void requestAllPokemon(){
         pokemonManager.getAllPokemon(this);
+
     }
 
     @Override
@@ -69,11 +73,9 @@ public class PokedexPresenter implements BasePresenter {
 
         if (generation != null) {
             Log.d("POKEMON", "not null");
-            if (generation != null) {
-                pokedexView.DisplayGeneration(generation);
-            } else {
-                // display Error
-            }
+            pokedexView.DisplayGeneration(generation);
+        } else {
+            // display Error
         }
     }
 
@@ -82,7 +84,7 @@ public class PokedexPresenter implements BasePresenter {
         if(allPokemon !=null) {
             pokedexView.DisplayAllPokemon(allPokemon);
         } else {
-
+            Log.d("NULLL", 1 + "");
         }
     }
 

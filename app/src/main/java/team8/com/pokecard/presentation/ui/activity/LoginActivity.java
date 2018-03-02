@@ -45,7 +45,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         // Google
         mAuth = FirebaseAuth.getInstance();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -58,6 +57,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         signInButton.setSize(SignInButton.SIZE_STANDARD);
         signInButton.setOnClickListener(this);
         //Facebook
+
         callbackManager = CallbackManager.Factory.create();
         LoginButton loginButton = findViewById(R.id.sign_in_facebook_button);
         loginButton.setReadPermissions("email");

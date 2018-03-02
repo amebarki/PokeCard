@@ -26,7 +26,12 @@
     <string name="pokedex">Pokedex</string>
     <string name="my_pokemon">Mes Pokemon</string>
     <string name="deconnection">Deconnexion</string>
+
     <string name="client_google_token">290043865007-33ptherb22f4q3stgokkkvuqu2fmmn6g.apps.googleusercontent.com</string>
 
+
+    <string name="card_pokemon_name">Nom du Pokemon</string>
+    <string name="card_pokemon_id">Id</string>
+    <string name="card_pokemon_image_description">Image du pokemon</string>
 
 </resources>

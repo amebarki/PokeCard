@@ -62,15 +62,19 @@ public class PokemonManager {
 
     public void getAllPokemon(final BasePresenter basePresenter)
     {
+        Log.d("GET", basePresenter.toString() + "");
         Call<List<Pokemon>> call = PokemonApplication.getPokemonApiService().getAllPokemon();
         call.enqueue(new Callback<List<Pokemon>>() {
             @Override
             public void onResponse(Call<List<Pokemon>> call, Response<List<Pokemon>> response) {
+                Log.d("GET", response.body().size() + "");
                 basePresenter.getAllPokemon(response.body());
             }
 
             @Override
             public void onFailure(Call<List<Pokemon>> call, Throwable t) {
+                Log.d("ERREUR", t.getMessage());
+                Log.d("GYIUC2GOUYFGIZEU", 12221332 + "");
 
             }
         });

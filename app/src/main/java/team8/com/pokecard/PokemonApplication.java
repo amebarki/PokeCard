@@ -7,11 +7,8 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
-import team8.com.pokecard.Service.PokemonApiService;
 import team8.com.pokecard.data.manager.Navigator;
-import team8.com.pokecard.data.manager.PokemonDatabaseManager;
-import team8.com.pokecard.data.manager.PokemonManager;
-import team8.com.pokecard.data.manager.UserManager;
+import team8.com.pokecard.webservice.PokemonApiService;
 
 /**
  * Created by iem on 15/11/2017.
@@ -25,18 +22,18 @@ public class PokemonApplication extends Application {
     final public static int PRINT_LIST_ALL = 1;
     final public static int PRINT_LIST_GENERATION = 2;
     final public static int PRINT_LIST_ONE = 3;
-
+    final public static String API_BASE_URL = "http://192.168.43.19/pokecard/index.php/";
+    final public static String API_BASE_URL_ADAM = "http://172.31.246.100/pokecard/index.php/";
     @Override
     public void onCreate() {
         super.onCreate();
         application = this;
-        String API_BASE_URL = "http://172.31.246.100/pokecard/index.php/";
-//172.31.246.100
+
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
         Retrofit.Builder builder =
                 new Retrofit.Builder()
-                        .baseUrl(API_BASE_URL)
+                        .baseUrl(API_BASE_URL_ADAM)
                         .addConverterFactory(
                                 ScalarsConverterFactory.create())
                         .addConverterFactory(
@@ -64,6 +61,4 @@ public class PokemonApplication extends Application {
     public static PokemonApiService getPokemonApiService() {
         return pokemonApiService;
     }
-
-
 }
