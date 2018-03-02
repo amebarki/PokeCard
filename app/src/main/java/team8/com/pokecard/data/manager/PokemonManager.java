@@ -2,6 +2,8 @@ package team8.com.pokecard.data.manager;
 
 import android.util.Log;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -18,17 +20,9 @@ import team8.com.pokecard.presentation.presenter.BasePresenter;
 
 public class PokemonManager {
 
-    private static PokemonManager ourInstance;
-    private static PokemonManager instance;
 
-    public static PokemonManager getInstance() {
-        if(instance == null) {
-            instance = new PokemonManager();
-        }
-        return instance;
-    }
-
-    private PokemonManager() {
+    public PokemonManager()
+    {
 
     }
 
@@ -103,4 +97,37 @@ public class PokemonManager {
         void onSuccess(Pokemon p);
     }
 
+    public void sendPokemon(){
+        Pokemon poke = new Pokemon(151,"Mewtwo","sprite");
+        Call<CodeReturn> call = PokemonApplication.getPokemonApiService().insertNewPokemon(poke.getId(),poke.getName());
+        call.enqueue(new Callback<CodeReturn>() {
+            @Override
+            public void onResponse(Call<CodeReturn> call, Response<CodeReturn> response) {
+
+                if(response.isSuccessful())
+                {
+                    CodeReturn cr = response.body();
+                    Log.d("POKEMON",cr.message);
+                    Log.d("POKEMON","SUCCESS");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CodeReturn> call, Throwable t) {
+                Log.d("POKEMON" ,"Erreur" + t.getMessage());
+            }
+        });
+
+    }
+
+
+    public class CodeReturn {
+        @SerializedName("code")
+        public int code;
+        @SerializedName("name")
+        public String message;
+    }
+
+
 }
+

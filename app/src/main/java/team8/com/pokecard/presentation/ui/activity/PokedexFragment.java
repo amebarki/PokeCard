@@ -12,6 +12,7 @@ import java.util.List;
 
 import team8.com.pokecard.PokemonApplication;
 import team8.com.pokecard.R;
+import team8.com.pokecard.data.manager.Navigator;
 import team8.com.pokecard.data.model.Pokemon;
 import team8.com.pokecard.presentation.presenter.PokedexPresenter;
 import team8.com.pokecard.presentation.ui.adapter.PokedexAdapter;
@@ -52,8 +53,8 @@ public class PokedexFragment extends Fragment implements PokedexView {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        pokedexPresenter = new PokedexPresenter(getContext(), this);
-    }
+        pokedexPresenter = Navigator.getInstance().getPokedexPresenter(getContext(),this);
+        }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

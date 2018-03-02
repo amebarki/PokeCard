@@ -18,21 +18,21 @@ public class PokedexPresenter implements BasePresenter {
 
     Pokemon pok;
     PokemonManager pokemonManager;
-    PokemonDatabaseManager pokemonDatabaseManager;
     Pokemon poke;
 
     private PokedexView pokedexView;
     private Context context;
     private Pokemon pokemon;
-    public PokedexPresenter(Context context, PokedexView pokedexView)
+    public PokedexPresenter(Context context, PokemonManager manager,PokedexView pokedexView)
     {
         this.context = context;
         this.pokedexView = pokedexView;
+        this.pokemonManager = manager;
     }
 
     /*  public void test() {
 
-        PokemonManager.getInstance().getPokemon(1, new PokemonManager.IPokemon() {
+        pokemonManager.getPokemon(1, new PokemonManager.IPokemon() {
             @Override
             public void onSuccess(Pokemon p) {
                 pok = p;
@@ -42,15 +42,15 @@ public class PokedexPresenter implements BasePresenter {
     }*/
 
     public void requestPokemon(int id) {
-        PokemonManager.getInstance().getPokemon(id,this);
+        pokemonManager.getPokemon(id,this);
     }
 
     public void requestGeneration(int generation) {
-        PokemonManager.getInstance().getGeneration(generation,this);
+        pokemonManager.getGeneration(generation,this);
     }
 
     public void requestAllPokemon(){
-        PokemonManager.getInstance().getAllPokemon(this);
+        pokemonManager.getAllPokemon(this);
     }
 
     @Override
@@ -100,6 +100,6 @@ public class PokedexPresenter implements BasePresenter {
 
     public void sendPokemon()
     {
-        PokemonDatabaseManager.getInstance().sendPokemon();
+        // send pokemon to create in the db
     }
 }

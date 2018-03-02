@@ -1,12 +1,8 @@
 package team8.com.pokecard.presentation.ui.activity;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentContainer;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -17,10 +13,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import team8.com.pokecard.R;
-import team8.com.pokecard.presentation.ui.view.MenuView;
+import team8.com.pokecard.presentation.ui.view.HomeView;
 
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, MenuView {
+        implements NavigationView.OnNavigationItemSelectedListener, HomeView {
 
     private NavigationView navigationView;
 

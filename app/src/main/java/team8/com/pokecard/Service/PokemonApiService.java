@@ -2,18 +2,12 @@ package team8.com.pokecard.Service;
 
 import java.util.List;
 
-import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
-import team8.com.pokecard.data.manager.PokemonDatabaseManager;
 import team8.com.pokecard.data.manager.PokemonManager;
 import team8.com.pokecard.data.model.Pokemon;
 
@@ -77,7 +71,7 @@ public interface PokemonApiService {
 
     @FormUrlEncoded
     @POST("pokemon/receive")
-    Call<PokemonDatabaseManager.CodeReturn> insertNewPokemon(@Field("id") int id,
+    Call<PokemonManager.CodeReturn> insertNewPokemon(@Field("id") int id,
                                                              @Field("name") String name);
 
 

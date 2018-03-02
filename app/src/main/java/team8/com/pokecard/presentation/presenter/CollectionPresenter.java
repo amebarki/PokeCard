@@ -7,6 +7,7 @@ import java.util.List;
 import team8.com.pokecard.data.manager.PokemonManager;
 import team8.com.pokecard.data.model.Pokemon;
 import team8.com.pokecard.presentation.ui.view.CollectionView;
+import team8.com.pokecard.presentation.ui.view.PokedexView;
 
 /**
  * Created by iem on 13/12/2017.
@@ -14,21 +15,14 @@ import team8.com.pokecard.presentation.ui.view.CollectionView;
 
 public class CollectionPresenter implements BasePresenter {
     private CollectionView collectionView;
-    private static CollectionPresenter instance = null;
-
     private Pokemon currentPokemon;
+    private Context context = null;
+    private PokemonManager pokemonManager;
 
-    public static CollectionPresenter getInstance() {
-        if (instance == null) {
-            instance = new CollectionPresenter();
-        }
-
-        return instance;
-    }
-
-
-    public CollectionPresenter() {
-
+    public CollectionPresenter(Context context, PokemonManager manager, CollectionView view) {
+        this.context = context;
+        this.pokemonManager = manager;
+        this.collectionView = view;
     }
 
     public Pokemon getCurrentPokemon() {
@@ -41,7 +35,7 @@ public class CollectionPresenter implements BasePresenter {
 
     public void requestAllPokemon(CollectionView collectionView){
         this.collectionView = collectionView;
-        PokemonManager.getInstance().getAllPokemon(this);
+        pokemonManager.getAllPokemon(this);
     }
 
     @Override

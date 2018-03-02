@@ -3,6 +3,10 @@
     <string name="facebook_app_id">501866660170561</string>
     <string name="fb_login_protocol_scheme">fb501866660170561</string>
 
+    <string name="facebook_app_id_2">159076181332978</string>
+    <string name="facebook_app_secret">1581ab2b849db9e11d95eb4e0a5e40b1</string>
+
+
     <string name="app_name">PokeCard</string>
     <string name="title_activity_home">MenuActivity</string>
 
@@ -22,4 +26,7 @@
     <string name="pokedex">Pokedex</string>
     <string name="my_pokemon">Mes Pokemon</string>
     <string name="deconnection">Deconnexion</string>
+    <string name="client_google_token">290043865007-33ptherb22f4q3stgokkkvuqu2fmmn6g.apps.googleusercontent.com</string>
+
+
 </resources>

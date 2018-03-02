@@ -10,13 +10,18 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import team8.com.pokecard.PokemonApplication;
 import team8.com.pokecard.R;
+import team8.com.pokecard.data.manager.Navigator;
 import team8.com.pokecard.data.model.Pokemon;
 import team8.com.pokecard.presentation.presenter.CollectionPresenter;
+import team8.com.pokecard.presentation.presenter.DetailPresenter;
+import team8.com.pokecard.presentation.ui.view.DetailView;
 
-public class DetailPokemonActivity extends AppCompatActivity {
+public class DetailPokemonActivity extends AppCompatActivity implements DetailView {
+
     Pokemon pokemon;
-    CollectionPresenter presenter;
+    DetailPresenter presenter;
     ImageView imageView;
     TextView nameTextView;
     TextView idTextView;
@@ -26,8 +31,7 @@ public class DetailPokemonActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_pokemon);
 
-        presenter = CollectionPresenter.getInstance();
-        pokemon = presenter.getCurrentPokemon();
+        presenter = Navigator.getInstance().getDetailPresenter(this,this);
 
         setIdView();
         setNameView();

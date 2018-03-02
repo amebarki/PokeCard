@@ -18,6 +18,7 @@ import java.util.List;
 
 import team8.com.pokecard.PokemonApplication;
 import team8.com.pokecard.R;
+import team8.com.pokecard.data.manager.Navigator;
 import team8.com.pokecard.data.model.Pokemon;
 import team8.com.pokecard.presentation.presenter.CollectionPresenter;
 import team8.com.pokecard.presentation.presenter.PokedexPresenter;
@@ -46,7 +47,7 @@ public class CollectionFragment extends Fragment implements CollectionView {
         super.onCreate(savedInstanceState);
 
         pokemonArrayList = new ArrayList<>();
-        collectionPresenter = CollectionPresenter.getInstance();
+        collectionPresenter = Navigator.getInstance().getCollectionPresenter(context,this);
         collectionPresenter.requestAllPokemon(this);
     }
 
