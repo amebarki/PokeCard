@@ -1,14 +1,17 @@
 package team8.com.pokecard.data.manager;
 
 import android.content.Context;
+import android.util.Log;
 
 import team8.com.pokecard.presentation.presenter.CollectionPresenter;
 import team8.com.pokecard.presentation.presenter.DetailPresenter;
 import team8.com.pokecard.presentation.presenter.HomePresenter;
+import team8.com.pokecard.presentation.presenter.LoginPresenter;
 import team8.com.pokecard.presentation.presenter.PokedexPresenter;
 import team8.com.pokecard.presentation.ui.view.CollectionView;
 import team8.com.pokecard.presentation.ui.view.DetailView;
 import team8.com.pokecard.presentation.ui.view.HomeView;
+import team8.com.pokecard.presentation.ui.view.LoginView;
 import team8.com.pokecard.presentation.ui.view.PokedexView;
 
 /**
@@ -60,7 +63,10 @@ public class Navigator {
         return new CollectionPresenter(context,this.getPokemonManager(),collectionView);
     }
 
-
+    public LoginPresenter getLoginPresenter(Context context, LoginView view)
+    {
+        return  new LoginPresenter(context,view);
+    }
 
 
     public PokemonManager getPokemonManager() {

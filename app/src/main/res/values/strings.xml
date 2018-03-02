@@ -1,8 +1,9 @@
 <resources>
     //Facebook strings :
-    <string name="facebook_app_id">501866660170561</string>
-    <string name="fb_login_protocol_scheme">fb501866660170561</string>
-
+   <!-- <string name="facebook_app_id">501866660170561</string>
+    <string name="fb_login_protocol_scheme">fb501866660170561</string>-->
+    <string name="facebook_app_id">159076181332978</string>
+    <string name="fb_login_protocol_scheme">fb159076181332978</string>
     <string name="facebook_app_id_2">159076181332978</string>
     <string name="facebook_app_secret">1581ab2b849db9e11d95eb4e0a5e40b1</string>
 
