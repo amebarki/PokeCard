@@ -1,5 +1,6 @@
 package team8.com.pokecard.presentation.ui.activity;
 
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -33,23 +34,50 @@ public class DetailPokemonActivity extends AppCompatActivity implements DetailVi
 
         presenter = Navigator.getInstance().getDetailPresenter(this,this);
 
-        setIdView();
-        setNameView();
-        setImageView();
+        int position = -1;
+        if(getIntent().getExtras() != null) {
+            position = getIntent().getExtras().getInt("position");
+        }
+
+        if(position > -1) {
+            presenter.requestCurrentPokemon(position + 1);
+        } else {
+            final android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(this);
+            alertDialogBuilder.setPositiveButton("Ok",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    });
+
+            alertDialogBuilder.setMessage("Erreur");
+            alertDialogBuilder.show();
+        }
+
     }
 
     private void setImageView() {
-        imageView = findViewById(R.id.detail_image);
+        imageView = findViewById(R.id.detail_pokemon_image);
         Picasso.with(this).load(pokemon.getSprite()).into(imageView);
     }
 
     public void setIdView() {
-        idTextView = findViewById(R.id.detail_text_id);
+        idTextView = findViewById(R.id.detail_pokemon_id);
         idTextView.setText(String.valueOf(pokemon.getId()));
     }
 
     private void setNameView() {
-        nameTextView = findViewById(R.id.detail_text_name);
+        nameTextView = findViewById(R.id.detail_pokemon_name);
         nameTextView.setText(pokemon.getName());
+    }
+
+    @Override
+    public void DisplayPokemon(Pokemon pokemon) {
+        this.pokemon = pokemon;
+
+        setIdView();
+        setNameView();
+        setImageView();
     }
 }

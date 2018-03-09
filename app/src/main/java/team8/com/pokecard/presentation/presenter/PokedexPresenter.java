@@ -16,9 +16,7 @@ import team8.com.pokecard.presentation.ui.view.PokedexView;
 
 public class PokedexPresenter implements BasePresenter {
 
-    Pokemon pok;
     PokemonManager pokemonManager;
-    Pokemon poke;
 
     private PokedexView pokedexView;
     private Context context;

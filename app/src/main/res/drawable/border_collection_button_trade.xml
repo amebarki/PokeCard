@@ -2,12 +2,16 @@
 <shape
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
+    <gradient
+        android:startColor="#50cc50"
+        android:centerColor="#109910"
+        android:endColor="#50cc50"/>
     <stroke
-        android:width="2dp"
+        android:width="1dp"
         android:color="@color/com_facebook_button_background_color_disabled" />
     <corners
         android:bottomRightRadius="100dp"
-        android:bottomLeftRadius="10dp"
-        android:topLeftRadius="10dp"
-        android:topRightRadius="10dp" />
+        android:bottomLeftRadius="100dp"
+        android:topLeftRadius="100dip"
+        android:topRightRadius="100dp" />
 </shape>

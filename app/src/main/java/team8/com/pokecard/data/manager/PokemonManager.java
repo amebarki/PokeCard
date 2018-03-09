@@ -111,8 +111,6 @@ public class PokemonManager {
                 if(response.isSuccessful())
                 {
                     CodeReturn cr = response.body();
-                    Log.d("POKEMON",cr.message);
-                    Log.d("POKEMON","SUCCESS");
                 }
             }
 

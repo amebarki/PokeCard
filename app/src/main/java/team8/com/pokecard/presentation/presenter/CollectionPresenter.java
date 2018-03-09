@@ -15,7 +15,6 @@ import team8.com.pokecard.presentation.ui.view.PokedexView;
 
 public class CollectionPresenter implements BasePresenter {
     private CollectionView collectionView;
-    private Pokemon currentPokemon;
     private Context context = null;
     private PokemonManager pokemonManager;
 
@@ -25,16 +24,8 @@ public class CollectionPresenter implements BasePresenter {
         this.collectionView = view;
     }
 
-    public Pokemon getCurrentPokemon() {
-        return currentPokemon;
-    }
+    public void requestAllPokemon(){
 
-    public void setCurrentPokemon(Pokemon currentPokemon) {
-        this.currentPokemon = currentPokemon;
-    }
-
-    public void requestAllPokemon(CollectionView collectionView){
-        this.collectionView = collectionView;
         pokemonManager.getAllPokemon(this);
     }
 

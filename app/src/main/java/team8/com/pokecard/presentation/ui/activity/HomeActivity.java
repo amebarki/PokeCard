@@ -94,7 +94,6 @@ public class HomeActivity extends AppCompatActivity
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.main_fragment_container, fragment);
-        fragmentTransaction.addToBackStack("");
         fragmentTransaction.commit();
 
 
