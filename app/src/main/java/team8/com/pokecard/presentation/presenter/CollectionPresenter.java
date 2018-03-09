@@ -7,7 +7,6 @@ import java.util.List;
 import team8.com.pokecard.data.manager.PokemonManager;
 import team8.com.pokecard.data.model.Pokemon;
 import team8.com.pokecard.presentation.ui.view.CollectionView;
-import team8.com.pokecard.presentation.ui.view.PokedexView;
 
 /**
  * Created by iem on 13/12/2017.
@@ -44,25 +43,17 @@ public class CollectionPresenter implements BasePresenter {
     }
 
     @Override
-    public void getGeneration(List<Pokemon> generation) {
-
-    }
-
-    @Override
-    public void getAllPokemon(List<Pokemon> allPokemon) {
+    public void getListPokemons(List<Pokemon> allPokemon) {
         if(allPokemon !=null) {
             collectionView.DisplayCollectionPokemon(allPokemon);
         } else {
+            collectionView.DisplayErrorMessage();
         }
     }
 
     @Override
-    public void getIdByFacebook(int id) {
+    public void errorMessage(String message) {
 
     }
 
-    @Override
-    public void getIdByGoogle(int id) {
-
-    }
 }

@@ -10,30 +10,18 @@ import team8.com.pokecard.data.model.Pokemon;
 
 public class HomePresenter implements BasePresenter{
 
-
-
     @Override
     public void getPokemon(Pokemon p) {
 
     }
 
     @Override
-    public void getGeneration(List<Pokemon> generation) {
+    public void getListPokemons(List<Pokemon> allPokemon) {
 
     }
 
     @Override
-    public void getAllPokemon(List<Pokemon> allPokemon) {
-
-    }
-
-    @Override
-    public void getIdByFacebook(int id) {
-
-    }
-
-    @Override
-    public void getIdByGoogle(int id) {
+    public void errorMessage(String message) {
 
     }
 }

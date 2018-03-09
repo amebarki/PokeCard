@@ -23,7 +23,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import java.util.List;
+
 import team8.com.pokecard.R;
+import team8.com.pokecard.data.manager.Navigator;
+import team8.com.pokecard.data.manager.PokemonManager;
+import team8.com.pokecard.data.manager.UserManager;
+import team8.com.pokecard.data.model.Pokemon;
 import team8.com.pokecard.presentation.ui.view.LoginView;
 
 /**
@@ -37,10 +43,11 @@ public class LoginPresenter {
     private LoginView loginView;
     private static String TAG = "FIREBASE";
     private static final int RC_SIGN_IN = 100;
-
+    private UserManager userManager = null;
     public LoginPresenter(Context context, LoginView view) {
         this.context = context;
         this.loginView = view;
+        userManager = Navigator.getInstance().getUserManager();
     }
 
 
@@ -77,15 +84,33 @@ public class LoginPresenter {
         loginView.firebaseAuthWithFacebook(loginResult.getAccessToken());
     }
 
-    public void fireBaseSignInWithCredential(@NonNull Task<AuthResult> task,FirebaseAuth mAuth) {
+    public void fireBaseSignInWithCredential(@NonNull Task<AuthResult> task,FirebaseAuth mAuth,String socialNetworkName) {
         if (task.isSuccessful()) {
             Log.d(TAG, "signInWithCredential:success");
             FirebaseUser user = mAuth.getCurrentUser();
-            Log.d(TAG, "Email : " + user.getEmail() + "  Display Name : " + user.getDisplayName());
-            // launchHome
+            userManager.createUser(user,this);
+            userManager.userExist(this);
+            // verify if user is new  or not
         } else {
             Log.w(TAG, "signInWithCredential:failure", task.getException());
+            //display error
         }
+    }
+
+    public void launchBoosterPackActivity(){
+
+            loginView.launchBoosterPack();
+    }
+
+    public void launchHomeActivity()
+    {
+            loginView.launchHome();
+    }
+    
+
+    public void errorMessage(String message)
+    {
+
     }
 
 }

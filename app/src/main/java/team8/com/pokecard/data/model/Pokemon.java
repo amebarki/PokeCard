@@ -16,6 +16,12 @@ public class Pokemon {
     private String name;
     @SerializedName("sprite")
     private String sprite;
+    @SerializedName("description")
+    private String description;
+    @SerializedName("type1")
+    private int type1;
+    @SerializedName("type2")
+    private int type2;
 
 
     public Pokemon(int id, String name,String sprite){
@@ -47,6 +53,31 @@ public class Pokemon {
 
     public void setSprite(String sprite) {
         this.sprite = sprite;
+    }
+
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getType1() {
+        return type1;
+    }
+
+    public void setType1(int type1) {
+        this.type1 = type1;
+    }
+
+    public int getType2() {
+        return type2;
+    }
+
+    public void setType2(int type2) {
+        this.type2 = type2;
     }
 
     @Override

@@ -52,4 +52,14 @@ public class DetailPokemonActivity extends AppCompatActivity implements DetailVi
         nameTextView = findViewById(R.id.detail_text_name);
         nameTextView.setText(pokemon.getName());
     }
+
+    @Override
+    public void DisplayErrorMessage() {
+
+    }
+
+    @Override
+    public void DisplayInformationMessage() {
+
+    }
 }

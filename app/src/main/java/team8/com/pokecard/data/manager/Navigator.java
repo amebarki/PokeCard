@@ -3,11 +3,13 @@ package team8.com.pokecard.data.manager;
 import android.content.Context;
 import android.util.Log;
 
+import team8.com.pokecard.presentation.presenter.BoosterPresenter;
 import team8.com.pokecard.presentation.presenter.CollectionPresenter;
 import team8.com.pokecard.presentation.presenter.DetailPresenter;
 import team8.com.pokecard.presentation.presenter.HomePresenter;
 import team8.com.pokecard.presentation.presenter.LoginPresenter;
 import team8.com.pokecard.presentation.presenter.PokedexPresenter;
+import team8.com.pokecard.presentation.ui.view.BoosterView;
 import team8.com.pokecard.presentation.ui.view.CollectionView;
 import team8.com.pokecard.presentation.ui.view.DetailView;
 import team8.com.pokecard.presentation.ui.view.HomeView;
@@ -68,6 +70,9 @@ public class Navigator {
         return  new LoginPresenter(context,view);
     }
 
+    public BoosterPresenter getBoosterPresenter(Context context, BoosterView view){
+        return new BoosterPresenter(context,view);
+    }
 
     public PokemonManager getPokemonManager() {
         return pokemonManager;

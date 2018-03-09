@@ -106,4 +106,13 @@ public class PokedexFragment extends Fragment implements PokedexView {
         pokedexAdapter.notifyDataSetChanged();
     }
 
+    @Override
+    public void DisplayErrorMessage() {
+
+    }
+
+    @Override
+    public void DisplayInformationMessage() {
+
+    }
 }

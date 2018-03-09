@@ -1,6 +1,6 @@
 <resources>
     //Facebook strings :
-   <!-- <string name="facebook_app_id">501866660170561</string>
+    <!-- <string name="facebook_app_id">501866660170561</string>
     <string name="fb_login_protocol_scheme">fb501866660170561</string>-->
     <string name="facebook_app_id">159076181332978</string>
     <string name="fb_login_protocol_scheme">fb159076181332978</string>
@@ -34,5 +34,9 @@
     <string name="card_pokemon_name">Nom du Pokemon</string>
     <string name="card_pokemon_id">Id</string>
     <string name="card_pokemon_image_description">Image du pokemon</string>
+
+
+    <string name="facebook_name">FACEBOOK</string>
+    <string name="google_name">GOOGLE</string>
 
 </resources>

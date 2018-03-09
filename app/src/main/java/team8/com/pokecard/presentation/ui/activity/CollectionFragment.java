@@ -107,4 +107,14 @@ public class CollectionFragment extends Fragment implements CollectionView {
         recyclerView.getAdapter().notifyDataSetChanged();
 
     }
+
+    @Override
+    public void DisplayErrorMessage() {
+
+    }
+
+    @Override
+    public void DisplayInformationMessage() {
+
+    }
 }

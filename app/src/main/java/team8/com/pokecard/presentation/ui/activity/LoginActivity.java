@@ -38,6 +38,7 @@ import team8.com.pokecard.presentation.presenter.LoginPresenter;
 import team8.com.pokecard.presentation.ui.view.LoginView;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener, LoginView {
+
     private static final int RC_SIGN_IN = 100;
     private User user;
     private static String TAG = "FIREBASE";
@@ -45,7 +46,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private FirebaseAuth mAuth;
     private GoogleSignInClient mGoogleSignInClient;
     public CallbackManager callbackManager;
-
 
     private LoginPresenter loginPresenter = null;
 
@@ -101,7 +101,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        loginPresenter.fireBaseSignInWithCredential(task, mAuth);
+                        loginPresenter.fireBaseSignInWithCredential(task, mAuth,getString(R.string.google_name));
                     }
                 });
     }
@@ -115,7 +115,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        loginPresenter.fireBaseSignInWithCredential(task,mAuth);
+                        loginPresenter.fireBaseSignInWithCredential(task,mAuth,getString(R.string.facebook_name));
                     }
                 });
     }
@@ -127,7 +127,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void launchHome() {
-        goToMenu();
+       //goToMenu();
+    }
+
+    @Override
+    public void launchBoosterPack() {
+            // open BoosterPack
+    }
+
+    @Override
+    public void DisplayErrorMessage() {
+
+    }
+
+    @Override
+    public void DisplayInformationMessage() {
+
     }
 
     private class MyFacebookCallback implements FacebookCallback<LoginResult> {

@@ -67,7 +67,6 @@ public class PokedexPresenter implements BasePresenter {
         }
     }
 
-    @Override
     public void getGeneration(List<Pokemon> generation) {
         Log.d("POKEMON", "getGeneration");
 
@@ -80,7 +79,7 @@ public class PokedexPresenter implements BasePresenter {
     }
 
     @Override
-    public void getAllPokemon(List<Pokemon> allPokemon) {
+    public void getListPokemons(List<Pokemon> allPokemon) {
         if(allPokemon !=null) {
             pokedexView.DisplayAllPokemon(allPokemon);
         } else {
@@ -89,13 +88,7 @@ public class PokedexPresenter implements BasePresenter {
     }
 
     @Override
-    public void getIdByFacebook(int id){
-
-    }
-
-
-    @Override
-    public void getIdByGoogle(int id) {
+    public void errorMessage(String message) {
 
     }
 

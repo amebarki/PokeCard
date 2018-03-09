@@ -106,4 +106,13 @@ public class HomeActivity extends AppCompatActivity
         return true;
     }
 
+    @Override
+    public void DisplayErrorMessage() {
+
+    }
+
+    @Override
+    public void DisplayInformationMessage() {
+
+    }
 }

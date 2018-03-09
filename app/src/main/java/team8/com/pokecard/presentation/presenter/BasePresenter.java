@@ -12,11 +12,7 @@ public interface BasePresenter {
 
     void getPokemon(Pokemon p);
 
-    void getGeneration(List<Pokemon> generation);
+    void getListPokemons(List<Pokemon> allPokemon);
 
-    void getAllPokemon(List<Pokemon> allPokemon);
-
-    void getIdByFacebook(int id);
-
-    void getIdByGoogle(int id);
+    void errorMessage(String message);
 }

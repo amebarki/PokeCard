@@ -1,11 +1,9 @@
 package team8.com.pokecard.data.model;
 
-import android.util.Log;
+import com.google.gson.annotations.SerializedName;
 
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInResult;
-
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by iem on 15/11/2017.
@@ -13,27 +11,19 @@ import org.json.JSONObject;
 
 public class User {
 
+
+    private int userId;
+    @SerializedName("name")
     private String name;
-    private String emailFacebook;
-    private String emailGoogle;
-    private int idFacebook;
-    private int idGoogle;
-    private static String TAG="GOOOGLE";
-    public User(){
+    @SerializedName("email")
+    private String email;
+    private ArrayList<Pokemon> myPokemons;
 
-    }
 
-    public User(GoogleSignInAccount result)
-    {
-        Log.d(TAG,""+ result.getEmail());
-        Log.d(TAG,""+ result.getId());
-        Log.d(TAG,""+ result.getDisplayName());
-        Log.d(TAG,""+ result.getFamilyName());
-        Log.d(TAG,""+ result.getGivenName());
-    }
-    public User(String emailFacebook,String emailGoogle) {
-        this.emailFacebook = emailFacebook;
-        this.emailGoogle = emailGoogle;
+    public User(String name, String email) {
+        this.name = name;
+        this.email = email;
+        myPokemons = new ArrayList<>();
     }
 
 
@@ -45,31 +35,27 @@ public class User {
         this.name = name;
     }
 
-    public String getEmailFacebook() {
-        return emailFacebook;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmailFacebook(String emailFacebook) {
-        this.emailFacebook = emailFacebook;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getEmailGoogle() {
-        return emailGoogle;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setEmailGoogle(String emailGoogle) {
-        this.emailGoogle = emailGoogle;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public void getFacebookData(JSONObject object)
-    {
-
+    public ArrayList<Pokemon> getMyPokemons() {
+        return myPokemons;
     }
 
-
-    public void setIdGoogle(int idGoogle)
-    {
-        this.idGoogle = idGoogle;
+    public void setMyPokemons(List<Pokemon> myPokemons) {
+        this.myPokemons.addAll(myPokemons);
     }
-
 }
