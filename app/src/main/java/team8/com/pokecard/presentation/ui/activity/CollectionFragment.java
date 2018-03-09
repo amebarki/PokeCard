@@ -48,7 +48,6 @@ public class CollectionFragment extends Fragment implements CollectionView {
 
         pokemonArrayList = new ArrayList<>();
         collectionPresenter = Navigator.getInstance().getCollectionPresenter(context,this);
-        collectionPresenter.requestAllPokemon(this);
     }
 
     @Override
@@ -57,6 +56,8 @@ public class CollectionFragment extends Fragment implements CollectionView {
         View view = inflater.inflate(R.layout.fragment_collection, container, false);
 
         setRecyclerView(view);
+        // TODO: 09/03/2018 get the pokemon of the user 
+        collectionPresenter.requestPokemonsOfUser();
 
         return view;
     }
@@ -77,16 +78,12 @@ public class CollectionFragment extends Fragment implements CollectionView {
     private void setRecyclerView(View view) {
         recyclerView = view.findViewById(R.id.collection_recycler);
         recyclerView.setHasFixedSize(true);
-        GridLayoutManager layoutManager = new GridLayoutManager(context, 3);
+        GridLayoutManager layoutManager = new GridLayoutManager(context, 2);
 
         final CollectionRecyclerAdapter recyclerAdapter = new CollectionRecyclerAdapter(pokemonArrayList, context, new CustomItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
 
-                collectionPresenter.setCurrentPokemon(pokemonArrayList.get(position));
-
-                Intent intent = new Intent(context, DetailPokemonActivity.class);
-                startActivity(intent);
             }
         });
 
@@ -97,8 +94,6 @@ public class CollectionFragment extends Fragment implements CollectionView {
     @Override
     public void onResume() {
         super.onResume();
-
-        collectionPresenter.setCurrentPokemon(null);
     }
 
     @Override
@@ -109,12 +104,12 @@ public class CollectionFragment extends Fragment implements CollectionView {
     }
 
     @Override
-    public void DisplayErrorMessage() {
+    public void displayErrorMessage() {
 
     }
 
     @Override
-    public void DisplayInformationMessage() {
+    public void displayInformationMessage() {
 
     }
 }

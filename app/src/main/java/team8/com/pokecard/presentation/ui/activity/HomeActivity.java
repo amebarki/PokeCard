@@ -94,7 +94,6 @@ public class HomeActivity extends AppCompatActivity
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.main_fragment_container, fragment);
-        fragmentTransaction.addToBackStack("");
         fragmentTransaction.commit();
 
 
@@ -107,12 +106,12 @@ public class HomeActivity extends AppCompatActivity
     }
 
     @Override
-    public void DisplayErrorMessage() {
+    public void displayErrorMessage() {
 
     }
 
     @Override
-    public void DisplayInformationMessage() {
+    public void displayInformationMessage() {
 
     }
 }

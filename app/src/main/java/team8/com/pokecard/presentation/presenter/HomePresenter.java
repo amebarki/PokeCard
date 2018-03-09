@@ -21,6 +21,11 @@ public class HomePresenter implements BasePresenter{
     }
 
     @Override
+    public void infoMessage(String message) {
+
+    }
+
+    @Override
     public void errorMessage(String message) {
 
     }

@@ -22,6 +22,7 @@ import team8.com.pokecard.presentation.presenter.PokedexPresenter;
 // Display pokemons - NO USERS ARE CONCAIRNS ABOUT THIS
 public class PokemonManager {
 
+    private int idOfSelectedPokemon;
 
     public PokemonManager() {
 
@@ -33,8 +34,6 @@ public class PokemonManager {
         call.enqueue(new Callback<Pokemon>() {
             @Override
             public void onResponse(Call<Pokemon> call, Response<Pokemon> response) {
-                // listener.onSuccess(response.body());
-                Log.d("TAGO",response.body().toString());
                 basePresenter.getPokemon(response.body());
             }
 
@@ -91,40 +90,13 @@ public class PokemonManager {
         return null;
     }
 
-    public interface IPokemon {
-        void onSuccess(Pokemon p);
+
+    public int getIdOfSelectedPokemon() {
+        return idOfSelectedPokemon;
     }
 
-    public void sendPokemon() {
-        Pokemon poke = new Pokemon(151, "Mewtwo", "sprite");
-        Call<CodeReturn> call = PokemonApplication.getPokemonApiService().insertNewPokemon(poke.getId(), poke.getName());
-        call.enqueue(new Callback<CodeReturn>() {
-            @Override
-            public void onResponse(Call<CodeReturn> call, Response<CodeReturn> response) {
-
-                if (response.isSuccessful()) {
-                    CodeReturn cr = response.body();
-                    Log.d("POKEMON", cr.message);
-                    Log.d("POKEMON", "SUCCESS");
-                }
-            }
-
-            @Override
-            public void onFailure(Call<CodeReturn> call, Throwable t) {
-                Log.d("POKEMON", "Erreur" + t.getMessage());
-            }
-        });
-
+    public void setIdOfSelectedPokemon(int idOfSelectedPokemon) {
+        this.idOfSelectedPokemon = idOfSelectedPokemon;
     }
-
-
-    public class CodeReturn {
-        @SerializedName("code")
-        public int code;
-        @SerializedName("name")
-        public String message;
-    }
-
-
 }
 

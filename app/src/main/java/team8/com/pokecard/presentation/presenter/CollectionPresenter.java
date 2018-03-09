@@ -4,7 +4,9 @@ import android.content.Context;
 
 import java.util.List;
 
+import team8.com.pokecard.data.manager.Navigator;
 import team8.com.pokecard.data.manager.PokemonManager;
+import team8.com.pokecard.data.manager.UserManager;
 import team8.com.pokecard.data.model.Pokemon;
 import team8.com.pokecard.presentation.ui.view.CollectionView;
 
@@ -12,30 +14,41 @@ import team8.com.pokecard.presentation.ui.view.CollectionView;
  * Created by iem on 13/12/2017.
  */
 
-public class CollectionPresenter implements BasePresenter {
+public class CollectionPresenter implements BasePresenter{
     private CollectionView collectionView;
-    private Pokemon currentPokemon;
     private Context context = null;
-    private PokemonManager pokemonManager;
+    private UserManager userManager = null;
 
-    public CollectionPresenter(Context context, PokemonManager manager, CollectionView view) {
+    public CollectionPresenter(Context context, CollectionView view) {
         this.context = context;
-        this.pokemonManager = manager;
+        this.userManager = Navigator.getInstance().getUserManager();
         this.collectionView = view;
     }
 
-    public Pokemon getCurrentPokemon() {
-        return currentPokemon;
+    public void requestPokemonsOfUser(){
+            if(userManager.getCurrentUser().getMyPokemons() != null)
+            {
+                if(!userManager.getCurrentUser().getMyPokemons().isEmpty())
+                    collectionView.DisplayCollectionPokemon(userManager.getCurrentUser().getMyPokemons());
+                else
+                    collectionView.displayErrorMessage();
+            }else
+            {
+                collectionView.displayErrorMessage();
+            }
     }
 
-    public void setCurrentPokemon(Pokemon currentPokemon) {
-        this.currentPokemon = currentPokemon;
+
+    @Override
+    public void infoMessage(String message) {
+
     }
 
-    public void requestAllPokemon(CollectionView collectionView){
-        this.collectionView = collectionView;
-        pokemonManager.getAllPokemon(this);
+    @Override
+    public void errorMessage(String message) {
+
     }
+
 
     @Override
     public void getPokemon(Pokemon p) {
@@ -44,16 +57,6 @@ public class CollectionPresenter implements BasePresenter {
 
     @Override
     public void getListPokemons(List<Pokemon> allPokemon) {
-        if(allPokemon !=null) {
-            collectionView.DisplayCollectionPokemon(allPokemon);
-        } else {
-            collectionView.DisplayErrorMessage();
-        }
-    }
-
-    @Override
-    public void errorMessage(String message) {
 
     }
-
 }

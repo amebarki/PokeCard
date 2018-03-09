@@ -5,6 +5,7 @@ import android.util.Log;
 
 import java.util.List;
 
+import team8.com.pokecard.data.manager.Navigator;
 import team8.com.pokecard.data.manager.PokemonDatabaseManager;
 import team8.com.pokecard.data.manager.PokemonManager;
 import team8.com.pokecard.data.model.Pokemon;
@@ -16,38 +17,36 @@ import team8.com.pokecard.presentation.ui.view.PokedexView;
 
 public class PokedexPresenter implements BasePresenter {
 
-    Pokemon pok;
     PokemonManager pokemonManager;
-    Pokemon poke;
 
     private PokedexView pokedexView;
     private Context context;
     private Pokemon pokemon;
 
 
-    public PokedexPresenter(Context context, PokemonManager manager,PokedexView pokedexView)
+    public PokedexPresenter(Context context,PokedexView pokedexView)
     {
 
         this.context = context;
         this.pokedexView = pokedexView;
-        this.pokemonManager = manager;
+        this.pokemonManager = Navigator.getInstance().getPokemonManager();
+
     }
 
-    /*  public void test() {
+        // call this function when
+    public void saveIdOfSelectedPokemon(int id) {
+        if(id >0)
+            pokemonManager.setIdOfSelectedPokemon(id);
+        //pokemonManager.getPokemon(id,this);
+        else
+            pokedexView.displayErrorMessage();
+    }
 
-        pokemonManager.getPokemon(1, new PokemonManager.IPokemon() {
-            @Override
-            public void onSuccess(Pokemon p) {
-                pok = p;
-            }
-        });
-
-    }*/
-
-    public void requestPokemon(int id) {
+    public void requestPokemon(int id)
+    {
         pokemonManager.getPokemon(id,this);
     }
-
+    
     public void requestGeneration(int generation) {
         pokemonManager.getGeneration(generation,this);
     }
@@ -63,18 +62,16 @@ public class PokedexPresenter implements BasePresenter {
         if(pokemon !=null) {
             pokedexView.DisplayPokemon(pokemon);
         } else {
-            // displayError
+            pokedexView.displayErrorMessage();
         }
     }
 
     public void getGeneration(List<Pokemon> generation) {
-        Log.d("POKEMON", "getGeneration");
 
         if (generation != null) {
-            Log.d("POKEMON", "not null");
             pokedexView.DisplayGeneration(generation);
         } else {
-            // display Error
+            pokedexView.displayErrorMessage();
         }
     }
 
@@ -83,18 +80,17 @@ public class PokedexPresenter implements BasePresenter {
         if(allPokemon !=null) {
             pokedexView.DisplayAllPokemon(allPokemon);
         } else {
-            Log.d("NULLL", 1 + "");
+            pokedexView.displayErrorMessage();
         }
     }
 
     @Override
-    public void errorMessage(String message) {
+    public void infoMessage(String message) {
 
     }
 
-
-    public void sendPokemon()
-    {
-        // send pokemon to create in the db
+    @Override
+    public void errorMessage(String message) {
+            pokedexView.displayErrorMessage();
     }
 }

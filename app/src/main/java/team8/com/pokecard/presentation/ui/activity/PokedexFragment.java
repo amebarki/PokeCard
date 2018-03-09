@@ -1,14 +1,20 @@
 package team8.com.pokecard.presentation.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import team8.com.pokecard.PokemonApplication;
@@ -26,7 +32,7 @@ public class PokedexFragment extends Fragment implements PokedexView {
     private PokedexPresenter pokedexPresenter;
 
     public static PokedexFragment newInstanceAll() {
-        return newInstance(PokemonApplication.PRINT_LIST_GENERATION,1, 0);
+        return newInstance(PokemonApplication.PRINT_LIST_ALL,0, 0);
     }
 
     private static PokedexFragment newInstance(int printType, int generation, int id) {
@@ -60,17 +66,30 @@ public class PokedexFragment extends Fragment implements PokedexView {
         pokemonListView = view.findViewById(R.id.pokedex_list_view);
 
         pokemonListView.setAdapter(pokedexAdapter);
+        pokemonListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Intent intent = new Intent(getActivity(), DetailPokemonActivity.class);
+                // TODO: 09/03/2018 call this function instead of use a put extra
+                // TODO: 09/03/2018  pokedexPresenter.saveIdOfSelectedPokemon(getId);
+                // TODO: 09/03/2018 The manager keep the id of the pokemon selected to display 
+                // TODO: 09/03/2018 you will recup it by call a function inside the detailPresenter
+                intent.putExtra("id", pokemonArrayList.get(position).getId());
+                startActivity(intent);
+            }
+        });
 
         //Mise à jour de la liste avec tout les Pokemon
-        if(savedInstanceState != null) {
-            int print = savedInstanceState.getInt("print");
+        if(getArguments() != null) {
+            int print = getArguments().getInt("print", PokemonApplication.PRINT_LIST_ALL);
             switch (print) {
                 case PokemonApplication.PRINT_LIST_ONE:
-                    pokedexPresenter.requestPokemon(savedInstanceState.getInt("id"));
+                    pokedexPresenter.requestPokemon(getArguments().getInt("id"));
                     break;
 
                 case PokemonApplication.PRINT_LIST_GENERATION:
-                    pokedexPresenter.requestGeneration(savedInstanceState.getInt("generation"));
+                    pokedexPresenter.requestGeneration(getArguments().getInt("generation"));
                     break;
 
                 default:
@@ -107,12 +126,13 @@ public class PokedexFragment extends Fragment implements PokedexView {
     }
 
     @Override
-    public void DisplayErrorMessage() {
+    public void displayErrorMessage() {
 
     }
 
     @Override
-    public void DisplayInformationMessage() {
+    public void displayInformationMessage() {
 
     }
+
 }

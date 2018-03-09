@@ -86,6 +86,9 @@ public class Pokemon {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", sprite='" + sprite + '\'' +
+                ", description='" + description + '\'' +
+                ", type1='" + type1 + '\'' +
+                ", type2='" + type2 + '\'' +
                 '}';
     }
 }

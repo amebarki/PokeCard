@@ -86,12 +86,6 @@ public interface PokemonApiService {
                         @Field("offer_accepted") int offer_accepted);
 
 
-    @FormUrlEncoded
-    @POST("pokemon/receive")
-    Call<PokemonManager.CodeReturn> insertNewPokemon(@Field("id") int id,
-                                                     @Field("name") String name);
-
-
     /*
     @FormUrlEncoded
     @POST("users/new")

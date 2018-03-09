@@ -21,6 +21,8 @@ public class ExchangePresenter implements BasePresenter {
     private ExchangeView exchangeView;
     private UserManager userManager = null;
     private ExchangeManager exchangeManager = null;
+
+
     public ExchangePresenter(Context context, ExchangeView view) {
             this.context = context;
             this.exchangeView = view;
@@ -29,7 +31,7 @@ public class ExchangePresenter implements BasePresenter {
     }
 
 
-    public void getExchangeList()
+    public void requestExchangeList()
     {
 
     }
@@ -45,8 +47,13 @@ public class ExchangePresenter implements BasePresenter {
     }
 
     @Override
+    public void infoMessage(String message) {
+
+    }
+
+    @Override
     public void errorMessage(String message) {
-            exchangeView.DisplayErrorMessage();
+            exchangeView.displayErrorMessage();
     }
 
 

@@ -72,9 +72,6 @@ public class UserManager {
             @Override
             public void onResponse(Call<List<Pokemon>> call, Response<List<Pokemon>> response) {
                 currentUser.setMyPokemons(response.body());
-                for (int i = 0; i < currentUser.getMyPokemons().size(); i++) {
-                    Log.d("TAGO",currentUser.getMyPokemons().get(i).toString());
-                }
                 presenter.launchHomeActivity();
             }
 
@@ -88,17 +85,14 @@ public class UserManager {
     public void insertNewUser(final LoginPresenter presenter)
     {
         Call<String> call = PokemonApplication.getPokemonApiService().createUser(currentUser.getName(),currentUser.getEmail());
-        //Call<Integer> call = PokemonApplication.getPokemonApiService().createUser(currentUser.getName(),currentUser.getEmail());
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                Log.d("TAGO","SUCCESS");
                 presenter.launchBoosterPackActivity();
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Log.d("TAGO","FAILURE");
                 presenter.errorMessage("");
             }
         });

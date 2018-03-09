@@ -34,6 +34,7 @@
     <string name="card_pokemon_name">Nom du Pokemon</string>
     <string name="card_pokemon_id">Id</string>
     <string name="card_pokemon_image_description">Image du pokemon</string>
+    <string name="collection_button_trade">Échanger</string>
 
 
     <string name="facebook_name">FACEBOOK</string>

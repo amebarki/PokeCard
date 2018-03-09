@@ -6,6 +6,6 @@ package team8.com.pokecard.presentation.ui.view;
 
 public interface BaseView {
 
-    void DisplayErrorMessage();
-    void DisplayInformationMessage();
+    void displayErrorMessage();
+    void displayInformationMessage();
 }

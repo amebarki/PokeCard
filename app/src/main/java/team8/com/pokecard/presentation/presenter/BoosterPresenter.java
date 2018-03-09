@@ -35,7 +35,7 @@ public class BoosterPresenter implements BasePresenter {
             boosterView.DisplayBoosterPack(userManager.getCurrentUser().getMyPokemons());
         else
         {
-            boosterView.DisplayErrorMessage();
+            boosterView.displayErrorMessage();
         }
     }
 
@@ -51,7 +51,12 @@ public class BoosterPresenter implements BasePresenter {
     }
 
     @Override
+    public void infoMessage(String message) {
+
+    }
+
+    @Override
     public void errorMessage(String message) {
-            boosterView.DisplayErrorMessage();
+            boosterView.displayErrorMessage();
     }
 }

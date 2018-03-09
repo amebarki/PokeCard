@@ -127,7 +127,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void launchHome() {
-       //goToMenu();
+       goToMenu();
     }
 
     @Override
@@ -136,12 +136,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     @Override
-    public void DisplayErrorMessage() {
+    public void displayErrorMessage() {
 
     }
 
     @Override
-    public void DisplayInformationMessage() {
+    public void displayInformationMessage() {
 
     }
 

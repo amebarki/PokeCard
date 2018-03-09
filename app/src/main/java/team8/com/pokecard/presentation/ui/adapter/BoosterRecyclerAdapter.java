@@ -16,29 +16,26 @@ import team8.com.pokecard.R;
 import team8.com.pokecard.data.model.Pokemon;
 import team8.com.pokecard.tools.CustomItemClickListener;
 
-/**
- * Created by iem on 06/12/2017.
- */
+public class BoosterRecyclerAdapter extends RecyclerView.Adapter<BoosterRecyclerAdapter.MyHolder>  {
 
-public class CollectionRecyclerAdapter extends RecyclerView.Adapter<CollectionRecyclerAdapter.MyHolder> {
     private ArrayList<Pokemon> pokemonArrayList;
     private Context context;
 
     private CustomItemClickListener listener;
 
-    public CollectionRecyclerAdapter(ArrayList<Pokemon> pokemonArrayListList, Context context, CustomItemClickListener listener) {
+    public BoosterRecyclerAdapter(ArrayList<Pokemon> pokemonArrayListList, Context context, CustomItemClickListener listener) {
         this.pokemonArrayList = pokemonArrayListList;
         this.listener = listener;
         this.context = context;
     }
 
     @Override
-    public MyHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public BoosterRecyclerAdapter.MyHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         // create a new view
         final View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.collection_recycler_item, viewGroup, false);
+                .inflate(R.layout.booster_recycler_item, viewGroup, false);
 
-        final MyHolder myHolder = new MyHolder(view);
+        final BoosterRecyclerAdapter.MyHolder myHolder = new BoosterRecyclerAdapter.MyHolder(view);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,7 +47,7 @@ public class CollectionRecyclerAdapter extends RecyclerView.Adapter<CollectionRe
     }
 
     @Override
-    public void onBindViewHolder(MyHolder holder, int position) {
+    public void onBindViewHolder(BoosterRecyclerAdapter.MyHolder holder, int position) {
         holder.nameTextView.setText(pokemonArrayList.get(position).getName());
         Picasso.with(context).load(pokemonArrayList.get(position).getSprite()).into(holder.imageView);
     }
@@ -61,13 +58,13 @@ public class CollectionRecyclerAdapter extends RecyclerView.Adapter<CollectionRe
     }
 
     class MyHolder extends RecyclerView.ViewHolder {
-        TextView  nameTextView;
+        TextView nameTextView;
         ImageView imageView;
 
         MyHolder(View itemView) {
             super(itemView);
-            nameTextView = itemView.findViewById(R.id.collection_pokemon_name);
-            imageView = itemView.findViewById(R.id.collection_pokemon_image);
+            nameTextView = itemView.findViewById(R.id.booster_pokemon_name);
+            imageView = itemView.findViewById(R.id.booster_pokemon_image);
         }
     }
 }

@@ -49,15 +49,15 @@ public class Navigator {
     }
 
     public PokedexPresenter getPokedexPresenter(Context context, PokedexView pokedexView) {
-        return new PokedexPresenter(context, this.getPokemonManager(), pokedexView);
+        return new PokedexPresenter(context, pokedexView);
     }
 
     public DetailPresenter getDetailPresenter(Context context, DetailView detailView) {
-        return new DetailPresenter(context, this.getPokemonManager(), detailView);
+        return new DetailPresenter(context, detailView);
     }
 
     public CollectionPresenter getCollectionPresenter(Context context, CollectionView collectionView) {
-        return new CollectionPresenter(context, this.getPokemonManager(), collectionView);
+        return new CollectionPresenter(context, collectionView);
     }
 
     public LoginPresenter getLoginPresenter(Context context, LoginView view) {
