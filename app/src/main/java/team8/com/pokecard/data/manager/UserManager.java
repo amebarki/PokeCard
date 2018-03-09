@@ -104,7 +104,6 @@ public class UserManager {
         });
     }
 
-
     public void getPokemonsFromBoosterPack(final BasePresenter presenter)
     {
         Call<List<Pokemon>> call = PokemonApplication.getPokemonApiService().getBoosterPack(currentUser.getEmail());
