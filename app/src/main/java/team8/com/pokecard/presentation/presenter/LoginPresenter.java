@@ -106,7 +106,7 @@ public class LoginPresenter {
     {
             loginView.launchHome();
     }
-    
+
 
     public void errorMessage(String message)
     {

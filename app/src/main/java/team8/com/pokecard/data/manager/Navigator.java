@@ -22,56 +22,50 @@ import team8.com.pokecard.presentation.ui.view.PokedexView;
 
 public class Navigator {
 
-    private static Navigator instance =null;
+    private static Navigator instance = null;
     private PokemonDatabaseManager pokemonDatabaseManager = null;
     private PokemonManager pokemonManager = null;
     private UserManager userManager = null;
+    private ExchangeManager exchangeManager = null;
 
-
-    public void init()
-    {
+    public void init() {
         this.pokemonManager = new PokemonManager();
         this.userManager = new UserManager();
         this.pokemonDatabaseManager = new PokemonDatabaseManager();
+        this.exchangeManager = new ExchangeManager();
     }
 
 
     public static Navigator getInstance() {
-        if(instance == null) {
+        if (instance == null) {
             instance = new Navigator();
         }
         return instance;
     }
 
 
-
-    public HomePresenter getHomePresenter(Context context, HomeView homeView)
-    {
+    public HomePresenter getHomePresenter(Context context, HomeView homeView) {
         return new HomePresenter();
     }
 
-    public PokedexPresenter getPokedexPresenter(Context context, PokedexView pokedexView)
-    {
-        return new PokedexPresenter(context,this.getPokemonManager(),pokedexView);
+    public PokedexPresenter getPokedexPresenter(Context context, PokedexView pokedexView) {
+        return new PokedexPresenter(context, this.getPokemonManager(), pokedexView);
     }
 
-    public DetailPresenter getDetailPresenter(Context context, DetailView detailView)
-    {
-        return new DetailPresenter(context,this.getPokemonManager(),detailView);
+    public DetailPresenter getDetailPresenter(Context context, DetailView detailView) {
+        return new DetailPresenter(context, this.getPokemonManager(), detailView);
     }
 
-    public CollectionPresenter getCollectionPresenter(Context context, CollectionView collectionView)
-    {
-        return new CollectionPresenter(context,this.getPokemonManager(),collectionView);
+    public CollectionPresenter getCollectionPresenter(Context context, CollectionView collectionView) {
+        return new CollectionPresenter(context, this.getPokemonManager(), collectionView);
     }
 
-    public LoginPresenter getLoginPresenter(Context context, LoginView view)
-    {
-        return  new LoginPresenter(context,view);
+    public LoginPresenter getLoginPresenter(Context context, LoginView view) {
+        return new LoginPresenter(context, view);
     }
 
-    public BoosterPresenter getBoosterPresenter(Context context, BoosterView view){
-        return new BoosterPresenter(context,view);
+    public BoosterPresenter getBoosterPresenter(Context context, BoosterView view) {
+        return new BoosterPresenter(context, view);
     }
 
     public PokemonManager getPokemonManager() {
@@ -85,4 +79,9 @@ public class Navigator {
     public PokemonDatabaseManager getPokemonDatabaseManager() {
         return pokemonDatabaseManager;
     }
+
+    public ExchangeManager getExchangeManager() {
+        return exchangeManager;
+    }
+
 }

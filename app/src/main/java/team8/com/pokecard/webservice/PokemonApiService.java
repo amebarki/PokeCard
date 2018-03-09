@@ -10,6 +10,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import team8.com.pokecard.data.manager.PokemonManager;
+import team8.com.pokecard.data.model.Exchange;
 import team8.com.pokecard.data.model.Pokemon;
 import team8.com.pokecard.data.model.User;
 
@@ -48,26 +49,34 @@ public interface PokemonApiService {
     @GET("local/users/get/{email}/pokemon/booster")
     Call<List<Pokemon>> getBoosterPack(@Path("email") String email);
 
-    /*
-     *
-     *  CALL TO OBTAIN ID FOR THE CURRENT USER
-     *
-     */
+
     @FormUrlEncoded
     @POST("local/users/new")
     Call<String> createUser(@Field("name") String name,
                              @Field("email") String email);
 
 
+
+    @POST("local/pokemon/new")
+    Call<Integer> insertUserPokemon(@Field("id") int id,
+                                    @Field("name") String name,
+                                    @Field("sprite") String sprite,
+                                    @Field("description") String description,
+                                    @Field("type1") String type1,
+                                    @Field("type2") String type2);
     /**
      * CALL FOR EXCHANGE POKEMON BETWEEN USERS
      */
 
+    @GET("local/users/list/offer")
+    Call<List<Exchange>> listExchangeOfPokemons();
+
     @FormUrlEncoded
     @POST("local/users/offer")
-    Call offerPokemon(@Field("user_email") String user_email,
+    Call<Integer> offerPokemon(@Field("email") String user_email,
                       @Field("pokemon_offer_id") int pokemon_offer_id,
-                      @Field("pokemon_wanted_id") int pokemon_wanted_id);
+                      @Field("pokemon_wanted_id") int pokemon_wanted_id,
+                      @Field("offer_accepted") int offer_accepted);
 
 
     @FormUrlEncoded

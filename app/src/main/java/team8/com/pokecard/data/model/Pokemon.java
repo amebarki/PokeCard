@@ -19,9 +19,9 @@ public class Pokemon {
     @SerializedName("description")
     private String description;
     @SerializedName("type1")
-    private int type1;
+    private String type1;
     @SerializedName("type2")
-    private int type2;
+    private String type2;
 
 
     public Pokemon(int id, String name,String sprite){
@@ -64,19 +64,19 @@ public class Pokemon {
         this.description = description;
     }
 
-    public int getType1() {
+    public String getType1() {
         return type1;
     }
 
-    public void setType1(int type1) {
+    public void setType1(String type1) {
         this.type1 = type1;
     }
 
-    public int getType2() {
+    public String getType2() {
         return type2;
     }
 
-    public void setType2(int type2) {
+    public void setType2(String type2) {
         this.type2 = type2;
     }
 

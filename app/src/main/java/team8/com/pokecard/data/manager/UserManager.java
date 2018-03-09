@@ -121,24 +121,16 @@ public class UserManager {
         });
     }
 
-
-    public void insertExchangeOffer(final BasePresenter presenter,int idPokemonOffer, int idPokemonWanted)
+    public void insertUserPokemons()
     {
-        Pokemon poke = new Pokemon(151, "Mewtwo", "sprite");
-        Call call = PokemonApplication.getPokemonApiService().offerPokemon(currentUser.getEmail(),idPokemonOffer,idPokemonWanted);
-        call.enqueue(new Callback() {
-            @Override
-            public void onResponse(Call call, Response response) {
-                //info message
-            }
-
-            @Override
-            public void onFailure(Call call, Throwable t) {
-                presenter.errorMessage("");
-            }
-        });
+        for (int i = 0; i < currentUser.getMyPokemons().size(); i++) {
+            Pokemon pokemon = currentUser.getMyPokemons().get(i);
+            Call<Integer> call = PokemonApplication.getPokemonApiService().insertUserPokemon(
+                pokemon.getId(),pokemon.getName(),pokemon.getSprite(),pokemon.getDescription(),
+                    pokemon.getType1(),pokemon.getType2()
+            );
+        }
 
     }
-
 
 }
