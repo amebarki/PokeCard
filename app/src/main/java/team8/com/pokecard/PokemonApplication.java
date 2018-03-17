@@ -2,6 +2,8 @@ package team8.com.pokecard;
 
 import android.app.Application;
 
+import java.util.concurrent.TimeUnit;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -29,7 +31,9 @@ public class PokemonApplication extends Application {
         super.onCreate();
         application = this;
 
-        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder()
+                .readTimeout(60, TimeUnit.SECONDS)
+                .connectTimeout(60, TimeUnit.SECONDS);
 
         Retrofit.Builder builder =
                 new Retrofit.Builder()

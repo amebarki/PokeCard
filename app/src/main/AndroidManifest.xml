@@ -16,11 +16,6 @@
         android:theme="@style/AppTheme">
         <activity android:name=".presentation.ui.activity.LoginActivity"
             android:screenOrientation="sensorPortrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".presentation.ui.activity.HomeActivity"
@@ -31,7 +26,13 @@
         </activity>
 
         <activity android:name=".presentation.ui.activity.BoosterActivity"
-            android:screenOrientation="sensorPortrait" />
+            android:screenOrientation="sensorPortrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

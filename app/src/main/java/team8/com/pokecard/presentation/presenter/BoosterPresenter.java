@@ -1,6 +1,7 @@
 package team8.com.pokecard.presentation.presenter;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.List;
 
@@ -30,13 +31,9 @@ public class BoosterPresenter implements BasePresenter {
 
     public void openBoosterPack()
     {
+        userManager.setCurrentUser("Adam Mebarki","nasaru@hotmail.fr");
         userManager.getPokemonsFromBoosterPack(this);
-        if(userManager.getCurrentUser().getMyPokemons() != null)
-            boosterView.DisplayBoosterPack(userManager.getCurrentUser().getMyPokemons());
-        else
-        {
-            boosterView.displayErrorMessage();
-        }
+
     }
 
 
@@ -47,7 +44,19 @@ public class BoosterPresenter implements BasePresenter {
 
     @Override
     public void getListPokemons(List<Pokemon> allPokemon) {
+        userManager.getCurrentUser().setMyPokemons(allPokemon);
+        if(userManager.getCurrentUser().getMyPokemons() != null)
+        {
+            for (int i = 0; i < userManager.getCurrentUser().getMyPokemons().size(); i++) {
+                Log.d("TAGO",userManager.getCurrentUser().getMyPokemons().get(i).toString());
+            }
+            boosterView.DisplayBoosterPack(userManager.getCurrentUser().getMyPokemons());
+        }// TODO: 10/03/2018 insert in the db in the API DE MERDE
 
+        else
+        {
+            boosterView.displayErrorMessage();
+        }
     }
 
     @Override

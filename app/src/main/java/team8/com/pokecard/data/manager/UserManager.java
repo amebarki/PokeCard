@@ -27,33 +27,33 @@ public class UserManager {
 
     }
 
-    public void createUser(FirebaseUser user,LoginPresenter presenter) {
+    public void createUser(FirebaseUser user, LoginPresenter presenter) {
         if (user != null) {
-            this.currentUser = new User(user.getDisplayName(),user.getEmail());
-        }else
-        {
+            this.currentUser = new User(user.getDisplayName(), user.getEmail());
+        } else {
             presenter.errorMessage("");
         }
     }
 
-    public User getCurrentUser(){
+    public User getCurrentUser() {
         return currentUser;
     }
 
+    public void setCurrentUser(String name, String email) {
+        this.currentUser = new User(name, email);
+    }
 
-    public void userExist(final LoginPresenter presenter)
-    {
+    public void userExist(final LoginPresenter presenter) {
         Call<User> call = PokemonApplication.getPokemonApiService().getUser(currentUser.getEmail());
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                if(response.isSuccessful()) {
+                if (response.isSuccessful()) {
                     // user exist get his pokemon and launch home
                     getUserPokemonsList(presenter);
-                }
-                else{
+                } else {
                     // user doesn't exist create in the db and launch BoosterPack
-                    Log.d("TAGO","Insert New User");
+                    Log.d("TAGO", "Insert New User");
                     insertNewUser(presenter);
                 }
             }
@@ -65,8 +65,7 @@ public class UserManager {
         });
     }
 
-    public void getUserPokemonsList(final LoginPresenter presenter)
-    {
+    public void getUserPokemonsList(final LoginPresenter presenter) {
         Call<List<Pokemon>> call = PokemonApplication.getPokemonApiService().getUserListPokemon(currentUser.getEmail());
         call.enqueue(new Callback<List<Pokemon>>() {
             @Override
@@ -82,9 +81,8 @@ public class UserManager {
         });
     }
 
-    public void insertNewUser(final LoginPresenter presenter)
-    {
-        Call<String> call = PokemonApplication.getPokemonApiService().createUser(currentUser.getName(),currentUser.getEmail());
+    public void insertNewUser(final LoginPresenter presenter) {
+        Call<String> call = PokemonApplication.getPokemonApiService().createUser(currentUser.getName(), currentUser.getEmail());
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
@@ -98,32 +96,34 @@ public class UserManager {
         });
     }
 
-    public void getPokemonsFromBoosterPack(final BasePresenter presenter)
-    {
+    public void getPokemonsFromBoosterPack(final BasePresenter presenter) {
+        Log.d("TAGO", currentUser.getEmail());
         Call<List<Pokemon>> call = PokemonApplication.getPokemonApiService().getBoosterPack(currentUser.getEmail());
         call.enqueue(new Callback<List<Pokemon>>() {
             @Override
             public void onResponse(Call<List<Pokemon>> call, Response<List<Pokemon>> response) {
-                currentUser.setMyPokemons(response.body());
+                if (response.isSuccessful()) {
+                    Log.d("TAGO","RESPONSE");
+                    presenter.getListPokemons(response.body());
+                }
             }
 
             @Override
             public void onFailure(Call<List<Pokemon>> call, Throwable t) {
                 presenter.errorMessage("");
+                Log.d("TAGO","ERROR : " + t.getMessage());
             }
         });
     }
 
-    public void insertUserPokemons()
-    {
+    public void insertUserPokemons() {
         for (int i = 0; i < currentUser.getMyPokemons().size(); i++) {
             Pokemon pokemon = currentUser.getMyPokemons().get(i);
-            Call<Integer> call = PokemonApplication.getPokemonApiService().insertUserPokemon(
-                pokemon.getId(),pokemon.getName(),pokemon.getSprite(),pokemon.getDescription(),
-                    pokemon.getType1(),pokemon.getType2()
+            PokemonApplication.getPokemonApiService().insertUserPokemon(
+                    pokemon.getId(), pokemon.getName(), pokemon.getSprite(), pokemon.getDescription(),
+                    pokemon.getType1(), pokemon.getType2()
             );
         }
-
     }
 
 }

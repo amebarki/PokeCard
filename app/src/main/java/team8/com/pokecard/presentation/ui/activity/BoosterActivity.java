@@ -19,9 +19,10 @@ import team8.com.pokecard.data.model.Pokemon;
 import team8.com.pokecard.presentation.presenter.BoosterPresenter;
 import team8.com.pokecard.presentation.presenter.CollectionPresenter;
 import team8.com.pokecard.presentation.ui.adapter.CollectionRecyclerAdapter;
+import team8.com.pokecard.presentation.ui.view.BoosterView;
 import team8.com.pokecard.tools.CustomItemClickListener;
 
-public class BoosterActivity extends AppCompatActivity implements View.OnClickListener {
+public class BoosterActivity extends AppCompatActivity implements View.OnClickListener, BoosterView {
 
     RecyclerView recyclerView;
     ArrayList<Pokemon> pokemonArrayList;
@@ -34,9 +35,12 @@ public class BoosterActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booster);
-
+        boosterPresenter = Navigator.getInstance().getBoosterPresenter(this,this);
         openButton = findViewById(R.id.booster_button_open);
         openButton.setOnClickListener(this);
+        // TODO: 10/03/2018 keep this function here to charge the booster pack before click the button  
+        // TODO: 10/03/2018 I met the problem of time out with it. If it reach 60 seconds = error maybe a retry will be necessary
+        boosterPresenter.openBoosterPack();
     }
 
     @Override
@@ -65,4 +69,18 @@ public class BoosterActivity extends AppCompatActivity implements View.OnClickLi
     }
 
 
+    @Override
+    public void displayErrorMessage() {
+
+    }
+
+    @Override
+    public void displayInformationMessage() {
+
+    }
+
+    @Override
+    public void DisplayBoosterPack(List<Pokemon> boosterPackPokemons) {
+
+    }
 }
