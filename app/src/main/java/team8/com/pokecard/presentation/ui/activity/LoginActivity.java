@@ -1,8 +1,11 @@
 package team8.com.pokecard.presentation.ui.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -53,6 +56,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        WifiManager wifi = (WifiManager)getSystemService(this.WIFI_SERVICE);
+        if (!wifi.isWifiEnabled()){
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+            builder1.setMessage("You must activate the wifi please");
+            builder1.setCancelable(true);
+
+            builder1.setPositiveButton(
+                    "Yes",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                            finishAndRemoveTask();
+                        }
+                    });
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+        }
         loginPresenter = Navigator.getInstance().getLoginPresenter(this, this);
         mGoogleSignInClient = loginPresenter.initGoogleSignIn();
         callbackManager = loginPresenter.initFacebookSignIn();
@@ -132,7 +152,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void launchBoosterPack() {
-            // open BoosterPack
+        Intent menuIntent = new Intent(this, BoosterActivity.class);
+        startActivity(menuIntent);
     }
 
     @Override
@@ -149,7 +170,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         @Override
         public void onSuccess(LoginResult loginResult) {
             loginPresenter.recupAccessToken(loginResult);
-//            goToMenu();
+           // goToMenu();
         }
 
         @Override

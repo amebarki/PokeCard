@@ -13,7 +13,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import team8.com.pokecard.R;
+import team8.com.pokecard.data.manager.Navigator;
 import team8.com.pokecard.presentation.ui.fragment.CollectionFragment;
 import team8.com.pokecard.presentation.ui.fragment.PokedexFragment;
 import team8.com.pokecard.presentation.ui.view.HomeView;
@@ -97,6 +100,18 @@ public class HomeActivity extends AppCompatActivity
             Intent intent = new Intent(this, TradeActivity.class);
 
             startActivity(intent);
+            return true;
+
+        } else if (id == R.id.nav_booster) {
+            Intent intent = new Intent(this, BoosterActivity.class);
+
+            startActivity(intent);
+            return true;
+        } else if (id == R.id.nav_deconnection) {
+            FirebaseAuth mAuth;
+            mAuth = FirebaseAuth.getInstance();
+            mAuth.signOut();
+            finishAndRemoveTask();
             return true;
         }
 

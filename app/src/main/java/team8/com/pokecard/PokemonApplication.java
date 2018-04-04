@@ -24,7 +24,7 @@ public class PokemonApplication extends Application {
     final public static int PRINT_LIST_ALL = 1;
     final public static int PRINT_LIST_GENERATION = 2;
     final public static int PRINT_LIST_ONE = 3;
-    final public static String API_BASE_URL = "http://192.168.43.19/pokecard/index.php/";
+    final public static String API_BASE_URL = "http://192.168.43.87/pokecard/index.php/";
     final public static String API_BASE_URL_ADAM = "http://192.168.1.16/pokecard/index.php/"; //172.31.246.100
     @Override
     public void onCreate() {

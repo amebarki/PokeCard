@@ -34,30 +34,7 @@ public class DetailPokemonActivity extends AppCompatActivity implements DetailVi
 
         presenter = Navigator.getInstance().getDetailPresenter(this,this);
 
-        int position = -1;
-        if(getIntent().getExtras() != null) {
-            position = getIntent().getExtras().getInt("position");
-        }
-        // TODO: 09/03/2018   if position is the id of the pokemon selected -> you can delete it
-        // TODO: 09/03/2018   the id is keep by the manager itself
-        if(position > -1) {
-            //presenter.requestCurrentPokemon(position + 1);
-            // TODO: 09/03/2018 replace by this function
-            // TODO: 09/03/2018  presenter.requestPokemonSelected();
-        } else {
-            final android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(this);
-            alertDialogBuilder.setPositiveButton("Ok",
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            finish();
-                        }
-                    });
-
-            alertDialogBuilder.setMessage("Erreur");
-            alertDialogBuilder.show();
-        }
-
+        presenter.requestPokemonSelected();
     }
 
     private void setImageView() {

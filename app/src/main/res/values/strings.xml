@@ -42,5 +42,6 @@
     <string name="trade_send">Déposer</string>
     <string name="trade_select">Disponible</string>
     <string name="nav_trade">Echanger</string>
+    <string name="nav_booster">Booster</string>
 
 </resources>

@@ -39,7 +39,7 @@ public class TradeActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.trade_tabLayout);
         if (tabLayout != null) {
             tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-            tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+            tabLayout.setTabMode(TabLayout.MODE_FIXED);
 
             viewPager = findViewById(R.id.trade_viewPager);
             viewPager.setAdapter(new TradePagerAdapter(getSupportFragmentManager(),this));

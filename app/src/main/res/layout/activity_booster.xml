@@ -13,6 +13,7 @@
         android:text="Ouvrir un booster"
         android:background="@drawable/border_collection_button_trade"
         android:padding="10dp"
+        android:layout_margin="10dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/booster_recycler"
         app:layout_constraintStart_toStartOf="parent"

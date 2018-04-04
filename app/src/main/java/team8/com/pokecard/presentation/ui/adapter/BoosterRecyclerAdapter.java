@@ -54,6 +54,9 @@ public class BoosterRecyclerAdapter extends RecyclerView.Adapter<BoosterRecycler
 
     @Override
     public int getItemCount() {
+        if (pokemonArrayList == null) {
+            return 0;
+        }
         return pokemonArrayList.size();
     }
 

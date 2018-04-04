@@ -29,6 +29,7 @@ public class UserManager {
 
     public void createUser(FirebaseUser user, LoginPresenter presenter) {
         if (user != null) {
+            Log.d("TAGO",user.getEmail());
             this.currentUser = new User(user.getDisplayName(), user.getEmail());
         } else {
             presenter.errorMessage("");
@@ -70,6 +71,7 @@ public class UserManager {
         call.enqueue(new Callback<List<Pokemon>>() {
             @Override
             public void onResponse(Call<List<Pokemon>> call, Response<List<Pokemon>> response) {
+                Log.d("TAGO", currentUser.getEmail());
                 currentUser.setMyPokemons(response.body());
                 presenter.launchHomeActivity();
             }

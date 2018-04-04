@@ -18,6 +18,7 @@ import team8.com.pokecard.data.manager.Navigator;
 import team8.com.pokecard.data.model.Pokemon;
 import team8.com.pokecard.presentation.presenter.BoosterPresenter;
 import team8.com.pokecard.presentation.presenter.CollectionPresenter;
+import team8.com.pokecard.presentation.ui.adapter.BoosterRecyclerAdapter;
 import team8.com.pokecard.presentation.ui.adapter.CollectionRecyclerAdapter;
 import team8.com.pokecard.presentation.ui.view.BoosterView;
 import team8.com.pokecard.tools.CustomItemClickListener;
@@ -25,9 +26,8 @@ import team8.com.pokecard.tools.CustomItemClickListener;
 public class BoosterActivity extends AppCompatActivity implements View.OnClickListener, BoosterView {
 
     RecyclerView recyclerView;
-    ArrayList<Pokemon> pokemonArrayList;
+    ArrayList<Pokemon> pokemonArrayList = new ArrayList<>();
     BoosterPresenter boosterPresenter;
-    Context context;
 
     Button openButton;
 
@@ -38,33 +38,29 @@ public class BoosterActivity extends AppCompatActivity implements View.OnClickLi
         boosterPresenter = Navigator.getInstance().getBoosterPresenter(this,this);
         openButton = findViewById(R.id.booster_button_open);
         openButton.setOnClickListener(this);
-        // TODO: 10/03/2018 keep this function here to charge the booster pack before click the button  
-        // TODO: 10/03/2018 I met the problem of time out with it. If it reach 60 seconds = error maybe a retry will be necessary
-        boosterPresenter.openBoosterPack();
+        setRecyclerView();
     }
 
     @Override
     public void onClick(View v) {
         if (v == findViewById(R.id.booster_button_open)) {
-            setRecyclerView();
-
-            //TODO Get 5 Pokemon random (Request Call Presenter)
+            boosterPresenter.openBoosterPack();
         }
     }
 
     private void setRecyclerView() {
-        recyclerView = findViewById(R.id.collection_recycler);
+        recyclerView = findViewById(R.id.booster_recycler);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
 
-        final CollectionRecyclerAdapter recyclerAdapter = new CollectionRecyclerAdapter(pokemonArrayList, context, new CustomItemClickListener() {
+        final BoosterRecyclerAdapter boosterRecyclerAdapter = new BoosterRecyclerAdapter(pokemonArrayList, this, new CustomItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
 
             }
         });
 
-        recyclerView.setAdapter(recyclerAdapter);
+        recyclerView.setAdapter(boosterRecyclerAdapter);
         recyclerView.setLayoutManager(layoutManager);
     }
 
@@ -81,6 +77,8 @@ public class BoosterActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void DisplayBoosterPack(List<Pokemon> boosterPackPokemons) {
+        pokemonArrayList.addAll(boosterPackPokemons);
+        recyclerView.getAdapter().notifyDataSetChanged();
 
     }
 }

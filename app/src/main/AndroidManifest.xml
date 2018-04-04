@@ -3,7 +3,9 @@
     package="team8.com.pokecard">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -14,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentation.ui.activity.LoginActivity"
+        <activity
+            android:name=".presentation.ui.activity.LoginActivity"
             android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,13 +28,14 @@
         <activity
             android:name=".presentation.ui.activity.HomeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="sensorPortrait">
+            android:screenOrientation="sensorPortrait"
+            android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
-
-        <activity android:name=".presentation.ui.activity.BoosterActivity"
+        <activity
+            android:name=".presentation.ui.activity.BoosterActivity"
             android:screenOrientation="sensorPortrait">
+
         </activity>
 
         <meta-data
@@ -41,9 +45,7 @@
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-
             android:label="@string/app_name" />
-
         <activity
             android:name="com.facebook.CustomTabActivity"
             android:exported="true"
@@ -57,11 +59,20 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.ui.activity.TradeActivity"
+        <activity
+            android:name=".presentation.ui.activity.TradeActivity"
+            android:screenOrientation="sensorPortrait"
             android:theme="@style/AppTheme.NoActionBar">
+
         </activity>
-        <activity android:name=".presentation.ui.activity.DetailPokemonActivity"
+        <activity
+            android:name=".presentation.ui.activity.DetailPokemonActivity"
             android:screenOrientation="sensorPortrait">
+
+        </activity>
+        <activity android:name=".presentation.ui.activity.WantActivity"
+            android:screenOrientation="sensorPortrait">
+
         </activity>
     </application>
 

@@ -31,7 +31,7 @@ public class BoosterPresenter implements BasePresenter {
 
     public void openBoosterPack()
     {
-        userManager.setCurrentUser("Adam Mebarki","nasaru@hotmail.fr");
+       // userManager.setCurrentUser(,"nasaru@hotmail.fr");
         userManager.getPokemonsFromBoosterPack(this);
 
     }
@@ -47,12 +47,8 @@ public class BoosterPresenter implements BasePresenter {
         userManager.getCurrentUser().setMyPokemons(allPokemon);
         if(userManager.getCurrentUser().getMyPokemons() != null)
         {
-            for (int i = 0; i < userManager.getCurrentUser().getMyPokemons().size(); i++) {
-                Log.d("TAGO",userManager.getCurrentUser().getMyPokemons().get(i).toString());
-            }
-            boosterView.DisplayBoosterPack(userManager.getCurrentUser().getMyPokemons());
-        }// TODO: 10/03/2018 insert in the db in the API DE MERDE
-
+            boosterView.DisplayBoosterPack(allPokemon);
+        }
         else
         {
             boosterView.displayErrorMessage();

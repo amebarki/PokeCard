@@ -1,10 +1,12 @@
 package team8.com.pokecard.presentation.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,6 +16,7 @@ import java.util.ArrayList;
 
 import team8.com.pokecard.R;
 import team8.com.pokecard.data.model.Pokemon;
+import team8.com.pokecard.presentation.ui.activity.WantActivity;
 import team8.com.pokecard.tools.CustomItemClickListener;
 
 /**
@@ -50,9 +53,18 @@ public class CollectionRecyclerAdapter extends RecyclerView.Adapter<CollectionRe
     }
 
     @Override
-    public void onBindViewHolder(MyHolder holder, int position) {
+    public void onBindViewHolder(MyHolder holder, final int position) {
         holder.nameTextView.setText(pokemonArrayList.get(position).getName());
         Picasso.with(context).load(pokemonArrayList.get(position).getSprite()).into(holder.imageView);
+        holder.tradeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, WantActivity.class);
+
+                intent.putExtra("idTradePokemon", pokemonArrayList.get(position).getId());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -63,11 +75,13 @@ public class CollectionRecyclerAdapter extends RecyclerView.Adapter<CollectionRe
     class MyHolder extends RecyclerView.ViewHolder {
         TextView  nameTextView;
         ImageView imageView;
+        Button tradeButton;
 
         MyHolder(View itemView) {
             super(itemView);
             nameTextView = itemView.findViewById(R.id.collection_pokemon_name);
             imageView = itemView.findViewById(R.id.collection_pokemon_image);
+            tradeButton = itemView.findViewById(R.id.collection_pokemon_button_trade);
         }
     }
 }
