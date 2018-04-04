@@ -37,7 +37,7 @@ public class PokemonApplication extends Application {
 
         Retrofit.Builder builder =
                 new Retrofit.Builder()
-                        .baseUrl(API_BASE_URL_ADAM)
+                        .baseUrl(API_BASE_URL)
                         .addConverterFactory(
                                 ScalarsConverterFactory.create())
                         .addConverterFactory(

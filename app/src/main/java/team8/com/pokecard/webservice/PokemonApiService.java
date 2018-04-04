@@ -3,14 +3,12 @@ package team8.com.pokecard.webservice;
 import java.util.List;
 
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
-import team8.com.pokecard.data.manager.PokemonManager;
-import team8.com.pokecard.data.model.Exchange;
+import team8.com.pokecard.data.model.Trade;
 import team8.com.pokecard.data.model.Pokemon;
 import team8.com.pokecard.data.model.User;
 
@@ -69,7 +67,7 @@ public interface PokemonApiService {
      */
 
     @GET("local/users/list/offer")
-    Call<List<Exchange>> listExchangeOfPokemons();
+    Call<List<Trade>> listExchangeOfPokemons();
 
     @FormUrlEncoded
     @POST("local/users/offer")

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/trade_select_item_send_image"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="5dp"/>
+
+    <TextView
+        android:id="@+id/trade_select_item_send_id_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/trade_select_item_send_image"
+        app:layout_constraintEnd_toStartOf="@id/trade_select_item_send_user_name"
+        app:layout_constraintTop_toTopOf="@id/trade_select_item_send_image"
+        app:layout_constraintBottom_toBottomOf="@id/trade_select_item_send_image"
+        android:layout_margin="10dp"/>
+
+    <TextView
+        android:id="@+id/trade_select_item_send_user_name"
+        android:layout_width="0dp"
+        android:layout_height="25dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/trade_select_item_send_id_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/trade_select_item_send_image"
+        app:layout_constraintBottom_toBottomOf="@id/trade_select_item_send_image" />
+
+    <ImageView
+        android:id="@+id/trade_select_item_want_image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="@id/trade_select_item_send_image"
+        app:layout_constraintTop_toBottomOf="@id/trade_select_item_send_image"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/trade_select_item_want_id_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/trade_select_item_send_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/trade_select_item_want_image"
+        app:layout_constraintBottom_toBottomOf="@id/trade_select_item_want_image"
+        android:layout_marginStart="10dp"/>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,7 +1,6 @@
 package team8.com.pokecard.data.manager;
 
 import android.content.Context;
-import android.util.Log;
 
 import team8.com.pokecard.presentation.presenter.BoosterPresenter;
 import team8.com.pokecard.presentation.presenter.CollectionPresenter;
@@ -9,12 +8,14 @@ import team8.com.pokecard.presentation.presenter.DetailPresenter;
 import team8.com.pokecard.presentation.presenter.HomePresenter;
 import team8.com.pokecard.presentation.presenter.LoginPresenter;
 import team8.com.pokecard.presentation.presenter.PokedexPresenter;
+import team8.com.pokecard.presentation.presenter.TradePresenter;
 import team8.com.pokecard.presentation.ui.view.BoosterView;
 import team8.com.pokecard.presentation.ui.view.CollectionView;
 import team8.com.pokecard.presentation.ui.view.DetailView;
 import team8.com.pokecard.presentation.ui.view.HomeView;
 import team8.com.pokecard.presentation.ui.view.LoginView;
 import team8.com.pokecard.presentation.ui.view.PokedexView;
+import team8.com.pokecard.presentation.ui.view.TradeView;
 
 /**
  * Created by Adam on 02/03/2018.
@@ -26,13 +27,13 @@ public class Navigator {
     private PokemonDatabaseManager pokemonDatabaseManager = null;
     private PokemonManager pokemonManager = null;
     private UserManager userManager = null;
-    private ExchangeManager exchangeManager = null;
+    private TradeManager tradeManager = null;
 
     public void init() {
         this.pokemonManager = new PokemonManager();
         this.userManager = new UserManager();
         this.pokemonDatabaseManager = new PokemonDatabaseManager();
-        this.exchangeManager = new ExchangeManager();
+        this.tradeManager = new TradeManager();
     }
 
 
@@ -64,6 +65,10 @@ public class Navigator {
         return new LoginPresenter(context, view);
     }
 
+    public TradePresenter getTradePresenter(Context context, TradeView view) {
+        return new TradePresenter(context, view);
+    }
+
     public BoosterPresenter getBoosterPresenter(Context context, BoosterView view) {
         return new BoosterPresenter(context, view);
     }
@@ -80,8 +85,8 @@ public class Navigator {
         return pokemonDatabaseManager;
     }
 
-    public ExchangeManager getExchangeManager() {
-        return exchangeManager;
+    public TradeManager getTradeManager() {
+        return tradeManager;
     }
 
 }

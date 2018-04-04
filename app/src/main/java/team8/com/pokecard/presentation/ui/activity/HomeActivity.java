@@ -1,5 +1,6 @@
 package team8.com.pokecard.presentation.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -13,6 +14,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import team8.com.pokecard.R;
+import team8.com.pokecard.presentation.ui.fragment.CollectionFragment;
+import team8.com.pokecard.presentation.ui.fragment.PokedexFragment;
 import team8.com.pokecard.presentation.ui.view.HomeView;
 
 public class HomeActivity extends AppCompatActivity
@@ -90,6 +93,11 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_collection) {
             fragment = CollectionFragment.newInstance();
 
+        } else if (id == R.id.nav_trade) {
+            Intent intent = new Intent(this, TradeActivity.class);
+
+            startActivity(intent);
+            return true;
         }
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="team8.com.pokecard.presentation.ui.activity.PokedexFragment">
+    tools:context="team8.com.pokecard.presentation.ui.fragment.PokedexFragment">
 
     <ListView
         android:id="@+id/pokedex_list_view"

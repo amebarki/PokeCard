@@ -1,10 +1,8 @@
-package team8.com.pokecard.presentation.ui.activity;
+package team8.com.pokecard.presentation.ui.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +11,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import team8.com.pokecard.PokemonApplication;
@@ -22,6 +18,7 @@ import team8.com.pokecard.R;
 import team8.com.pokecard.data.manager.Navigator;
 import team8.com.pokecard.data.model.Pokemon;
 import team8.com.pokecard.presentation.presenter.PokedexPresenter;
+import team8.com.pokecard.presentation.ui.activity.DetailPokemonActivity;
 import team8.com.pokecard.presentation.ui.adapter.PokedexAdapter;
 import team8.com.pokecard.presentation.ui.view.PokedexView;
 

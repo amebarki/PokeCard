@@ -7,7 +7,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import team8.com.pokecard.PokemonApplication;
-import team8.com.pokecard.data.model.Exchange;
+import team8.com.pokecard.data.model.Trade;
 import team8.com.pokecard.data.model.User;
 import team8.com.pokecard.presentation.presenter.BasePresenter;
 
@@ -15,13 +15,13 @@ import team8.com.pokecard.presentation.presenter.BasePresenter;
  * Created by Adam on 09/03/2018.
  */
 
-public class ExchangeManager {
+public class TradeManager {
 
-    private ArrayList<Exchange> listExchangePokemon;
+    private ArrayList<Trade> listTradePokemon;
 
-    public ExchangeManager()
+    public TradeManager()
     {
-        listExchangePokemon = new ArrayList<>();
+        listTradePokemon = new ArrayList<>();
     }
 
     public void insertExchangeOffer(final BasePresenter presenter, int idPokemonOffer, int idPokemonWanted)
@@ -46,16 +46,16 @@ public class ExchangeManager {
     public void getListExchangePokemons(final BasePresenter presenter)
     {
         User currentUser = Navigator.getInstance().getUserManager().getCurrentUser();
-        Call<List<Exchange>> call = PokemonApplication.getPokemonApiService().listExchangeOfPokemons();
-        call.enqueue(new Callback<List<Exchange>>() {
+        Call<List<Trade>> call = PokemonApplication.getPokemonApiService().listExchangeOfPokemons();
+        call.enqueue(new Callback<List<Trade>>() {
             @Override
-            public void onResponse(Call<List<Exchange>> call, Response<List<Exchange>> response) {
+            public void onResponse(Call<List<Trade>> call, Response<List<Trade>> response) {
                 //info message
-                listExchangePokemon.addAll(response.body());
+                listTradePokemon.addAll(response.body());
             }
 
             @Override
-            public void onFailure(Call<List<Exchange>> call, Throwable t) {
+            public void onFailure(Call<List<Trade>> call, Throwable t) {
                 presenter.errorMessage("");
             }
         });
@@ -65,16 +65,16 @@ public class ExchangeManager {
     public void acceptExchange(final BasePresenter presenter)
     {
       /*  User currentUser = Navigator.getInstance().getUserManager().getCurrentUser();
-        Call<List<Exchange>> call = PokemonApplication.getPokemonApiService().listExchangeOfPokemons();
-        call.enqueue(new Callback<List<Exchange>>() {
+        Call<List<Trade>> call = PokemonApplication.getPokemonApiService().listExchangeOfPokemons();
+        call.enqueue(new Callback<List<Trade>>() {
             @Override
-            public void onResponse(Call<List<Exchange>> call, Response<List<Exchange>> response) {
+            public void onResponse(Call<List<Trade>> call, Response<List<Trade>> response) {
                 //info message
-                listExchangePokemon.addAll(response.body());
+                listTradePokemon.addAll(response.body());
             }
 
             @Override
-            public void onFailure(Call<List<Exchange>> call, Throwable t) {
+            public void onFailure(Call<List<Trade>> call, Throwable t) {
                 presenter.errorMessage("");
             }
         });*/

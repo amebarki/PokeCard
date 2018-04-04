@@ -33,7 +33,7 @@ public class BoosterRecyclerAdapter extends RecyclerView.Adapter<BoosterRecycler
     public BoosterRecyclerAdapter.MyHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         // create a new view
         final View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.booster_recycler_item, viewGroup, false);
+                .inflate(R.layout.recycler_item_booster, viewGroup, false);
 
         final BoosterRecyclerAdapter.MyHolder myHolder = new BoosterRecyclerAdapter.MyHolder(view);
         view.setOnClickListener(new View.OnClickListener() {

@@ -36,7 +36,7 @@ public class CollectionRecyclerAdapter extends RecyclerView.Adapter<CollectionRe
     public MyHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         // create a new view
         final View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.collection_recycler_item, viewGroup, false);
+                .inflate(R.layout.recycler_item_collection, viewGroup, false);
 
         final MyHolder myHolder = new MyHolder(view);
         view.setOnClickListener(new View.OnClickListener() {

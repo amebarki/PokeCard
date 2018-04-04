@@ -4,7 +4,7 @@ package team8.com.pokecard.data.model;
  * Created by Adam on 09/03/2018.
  */
 
-public class Exchange {
+public class Trade {
 
     private String email;
     private int pokemon_offer_id;
